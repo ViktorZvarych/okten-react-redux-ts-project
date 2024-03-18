@@ -1,0 +1,29 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: rgb(211, 47, 47);
+
+    h2 {
+        margin-block-end: 0;
+    }
+
+    p{
+        transition: 0.3s;
+        &:hover{
+            scale: 110%;
+        }
+        &:active{
+            scale: 90%;
+        }
+    }
+
+    a {
+        color: snow;
+        text-decoration: underline;
+
+    }
+
+}

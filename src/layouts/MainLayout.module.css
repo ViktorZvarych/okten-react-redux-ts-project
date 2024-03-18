@@ -1,0 +1,13 @@
+.main {
+    padding-top: 56px;
+    min-height: 100vh;
+}
+
+.dark {
+    background: darkslategray;
+    color: snow;
+
+    input {
+        background: snow;
+    }
+}

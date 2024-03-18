@@ -1,0 +1,71 @@
+.loginForm {
+    :root {
+        --color: rgb(211, 47, 47);
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    background-size: cover;
+    background-position: center;
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 70vw;
+        max-width: 350px;
+        height: 65vh;
+        max-height: 550px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        margin-top: 2rem;
+        padding: 8rem 1.5rem;
+        box-shadow: 0 0 20px 0 snow;
+        transition: .3s;
+
+        &:hover {
+            box-shadow: 0 0 20px 0 rgb(211, 47, 47);
+        }
+    }
+
+    .title {
+        color: black;
+        font-size: 2rem;
+        font-weight: 800;
+        background: linear-gradient(-45deg, #eeaa52, #e73c6f, #2394d5, #2af3b7);
+        -webkit-background-clip: text;
+        -webkit-text-stroke: 6px transparent;
+    }
+
+    .icon {
+        font-size: 7.5rem;
+    }
+
+    button {
+        background-color: transparent;
+        width: 100%;
+        margin: 1rem;
+        padding: 10px;
+        font-size: 1.2rem;
+        text-align: center;
+        color: white;
+        outline: none;
+        cursor: pointer;
+        border: 3px solid var(--color);
+        border-radius: 20px;
+        transition: .3s;
+        box-shadow: 0 0 7px 0 snow;
+
+        &:hover {
+            background-color: rgb(211, 47, 47);
+            box-shadow: 0 0 7px 0 rgb(211, 47, 47);
+        }
+
+        &:active {
+            scale: 90%;
+        }
+    }
+}

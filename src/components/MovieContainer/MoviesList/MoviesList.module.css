@@ -1,0 +1,17 @@
+.moviesList {
+    padding-top: 1rem;
+    ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        max-width: 95vw;
+
+        li {
+            max-width: 300px;
+            margin: 0.5rem;
+        }
+    }
+
+}
