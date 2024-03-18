@@ -13,7 +13,7 @@ const Genre: FC<IProps> = ({genre}) => {
 
     const {id} = genre;
 
-    const [urlParams, setUrlParams] = useSearchParams();
+    const [, setUrlParams] = useSearchParams();
 
     const clickHandler = () => {
         setUrlParams(prev => {

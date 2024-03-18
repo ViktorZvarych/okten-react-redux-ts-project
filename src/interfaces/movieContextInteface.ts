@@ -1,4 +1,4 @@
-import {IMoviesParams, newMovieParam} from "./moviesParamsInterface";
+import {IMoviesParams} from "./moviesParamsInterface";
 
 
 export interface IMovieContext {

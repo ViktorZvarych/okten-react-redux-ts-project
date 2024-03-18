@@ -14,7 +14,6 @@ const SearchInput = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
         reset
     } = useForm();
 

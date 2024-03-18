@@ -1,7 +1,7 @@
 import {apiService} from "./apiService";
 import {urls} from "../constants";
 import {IGenres, IMovieDetails, IMovies, IVideosObject} from "../interfaces";
-import {IRes} from "../types/axiosResponseType";
+import {IRes} from "../types";
 
 const moviesService = {
     getMovies: (params: string): IRes<IMovies> => apiService.get(urls.movies.allMovies + `?${params}`),
