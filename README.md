@@ -1,8 +1,11 @@
+# Vite
 # React
 # TypeScript
-# Vite
 # Axios
-# React router dom
+# React Router
 # Redux
 # Redux Toolkit
 
+1. terminal: "npm i"
+2. terminal: "npm run dev"
+3. browser: http://localhost:5173/

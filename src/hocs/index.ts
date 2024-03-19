@@ -1,3 +1,3 @@
 export * from './AuthProvider';
 export * from './MoviesListsContextProvider';
-export * from './ThemeContextProider';
+export * from './ThemeContextProvider.tsx';

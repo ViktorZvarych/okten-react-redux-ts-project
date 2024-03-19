@@ -11,7 +11,7 @@ const MoviesListsContext =
         topRatedMoviesList: IMovie[] | null;
         popularMoviesList: IMovie[] | null;
         upcomingMoviesList: IMovie[] | null;
-        firstPageMoviesList: IMovie[] | null;
+        // firstPageMoviesList: IMovie[] | null;
     } | null>(null);
 
 const MoviesListsContextProvider: FC<IProps> = ({children}) => {
@@ -21,7 +21,7 @@ const MoviesListsContextProvider: FC<IProps> = ({children}) => {
 
     const [upcomingMoviesList, setUpcomingMoviesList] = useState<IMovie[] | null>(null);
 
-    const [firstPageMoviesList, setFirstPageMoviesList] = useState<IMovie[] | null>(null);
+    // const [firstPageMoviesList, setFirstPageMoviesList] = useState<IMovie[] | null>(null);
 
     useEffect(() => {
         try {
@@ -56,20 +56,20 @@ const MoviesListsContextProvider: FC<IProps> = ({children}) => {
         }
     }, [])
 
-    useEffect(() => {
-        try {
-            (async (): Promise<void> => {
-                const {data} = await moviesService.getMovies('');
-                setFirstPageMoviesList(data.results);
-            })()
-        } catch (e) {
-            console.log(e);
-        }
-    }, [])
+    // useEffect(() => {
+    //     try {
+    //         (async (): Promise<void> => {
+    //             const {data} = await moviesService.getMovies('');
+    //             setFirstPageMoviesList(data.results);
+    //         })()
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // }, [])
 
 
     return (
-        <MoviesListsContext.Provider value={{topRatedMoviesList, popularMoviesList, upcomingMoviesList, firstPageMoviesList}}>
+        <MoviesListsContext.Provider value={{topRatedMoviesList, popularMoviesList, upcomingMoviesList}}>
             {children}
         </MoviesListsContext.Provider>
     );
