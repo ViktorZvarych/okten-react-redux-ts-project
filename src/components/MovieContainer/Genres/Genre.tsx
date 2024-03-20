@@ -1,30 +1,27 @@
-import {FC} from "react";
-import {useSearchParams} from "react-router-dom";
+import React, {FC} from "react";
 
 import {IGenre} from "../../../interfaces";
 
 interface IProps {
-    genre: IGenre;
+    genre: IGenre,
+    selectedGenresIds: string[],
+    setSelectedGenresIds: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-const Genre: FC<IProps> = ({genre}) => {
-    const {id} = genre;
+const Genre: FC<IProps> = ({genre, selectedGenresIds, setSelectedGenresIds}) => {
+    const {id, name} = genre;
 
-    const [, setUrlParams] = useSearchParams();
 
-    const handleSetParams = () => {
-        setUrlParams(prev => {
-            if (prev.get('with_genres')) {
-                prev.set('with_genres', prev.get('with_genres') + ',' + id.toString());
-            } else {
-                prev.set('with_genres', id.toString());
-            }
-            return prev;
-        });
-    };
+    const handleSelectGenresId = () => {
+        console.log('click');
+        const selectedId = id.toString();
+        selectedGenresIds.includes(selectedId)
+        ? setSelectedGenresIds(prev => prev.filter(id => id !== selectedId))
+        : setSelectedGenresIds(prev => [...prev, selectedId])
+    }
 
     return (
-        <p onClick={handleSetParams}>{genre.name}</p>
+        <span onClick={handleSelectGenresId}>{name}</span>
     );
 };
 

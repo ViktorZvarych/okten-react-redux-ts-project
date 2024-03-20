@@ -21,8 +21,9 @@ import MenuItem from "@mui/material/MenuItem";
 import css from './Header.module.css'
 import {authService} from "../../services";
 import {token} from "../../constants";
-import {SideBar} from "./SideBar";
+import {SideBar} from "../SideBar";
 import {ThemeToggle} from "./ThemeToggle";
+import {SearchInput} from "../MovieContainer";
 
 const Header = () => {
     const localToken = authService.getToken();
@@ -84,6 +85,9 @@ const Header = () => {
                                     </Button>
                                 </NavLink>
                             </Typography>
+
+
+                            {auth &&<SearchInput/>}
 
                             {!auth && (
                                 <FormGroup>

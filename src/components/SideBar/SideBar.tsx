@@ -7,7 +7,7 @@ import {FC} from "react";
 
 interface IProps {
     mobileOpen: boolean,
-    handleDrawerToggle: void
+    handleDrawerToggle: (() => void) | undefined
 }
 
 const SideBar: FC<IProps> = ({mobileOpen, handleDrawerToggle}) => {

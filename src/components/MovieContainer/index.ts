@@ -6,6 +6,7 @@ export * from './MoviesList';
 export * from './MoviesListCard';
 export * from './PaginationCustom';
 export * from './PosterPreview';
+export * from './SearchInput';
 export * from './SortInput';
 export * from './StarsRating';
 export * from './Videos';

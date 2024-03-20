@@ -1,87 +1,62 @@
 import {useEffect, useState} from "react";
-import {useLocation, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import {Multiselect} from "multiselect-react-dropdown";
 
-import {IGenre, IGenres} from "../../../interfaces";
+import {IGenre} from "../../../interfaces";
 import {moviesService} from "../../../services";
-import {Genre} from "./Genre";
 
-const GenresList  = () => {
-    const [genresArr, setGenresArr] = useState<string[]>([]);
-
-    const handleChange = (event: SelectChangeEvent<typeof genresArr>) => {
-        const {
-            target: { value },
-        } = event;
-
-        setGenresArr(
-            typeof value === 'string' ? value.split(',') : value,
-        );
-    };
+const GenresList = () => {
 
     const [, setUrlParams] = useSearchParams();
 
-    useEffect(() => {
-        setUrlParams(prev => {
-            if (genresArr[0]) {
-                prev.set('with_genres', genresArr.join(','));
-            } else {
-                prev.delete('with_genres');
-            }
-            return prev;
-        });
-    }, [setUrlParams, genresArr])
-
-    const {pathname, search} = useLocation();
-
-    useEffect(() => {
-        if(!search || pathname !== '/movies/list') {
-            setGenresArr([])
-        }
-    }, [pathname, search]);
-
-    const [genres, setGenres] = useState<IGenres | null>(null);
+    const [genres, setGenres] = useState<IGenre[] | null>(null);
 
     useEffect(() => {
         try {
             (async (): Promise<void> => {
                 const {data} = await moviesService.getGenres();
-                setGenres(data);
+                setGenres(data.genres);
             })()
         } catch (e) {
             console.log(e);
         }
     }, [])
 
+    const handleSelect = (selectedList: IGenre[]) => {
+        const selectedIds = selectedList.map(item => item.id).join(',');
+
+        const localSelectedGenresIds = localStorage.getItem('selectedGenresIds');
+
+        if (!selectedList && localSelectedGenresIds) {
+            console.log(localSelectedGenresIds)
+        } else {
+            localStorage.setItem('selectedGenresIds', selectedIds)
+        }
+
+        setUrlParams(`genres=${selectedIds}`);
+    }
+
     return (
-            <div>
-                <FormControl sx={{m: 1, minWidth: 200}}>
-                    <InputLabel id="multiple-chip-label">Genres</InputLabel>
-                    <Select
-                        labelId="multiple-chip-label"
-                        id="multiple-chip"
-                        multiple
-                        value={genresArr}
-                        onChange={handleChange}
-                        input={<OutlinedInput id="select-multiple-chip" label="Chip"/>}
-                    >
-                        {genres && genres.genres.map((genre: IGenre) => (
-                            <MenuItem
-                                key={genre.id}
-                                value={genre.id}
-                                title={genre.name}
-                            >
-                                <Genre key={genre.id} genre={genre}/>
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
-            </div>
+        <div>
+            {genres
+                &&
+                <Multiselect
+                    displayValue='name'
+                    placeholder='Select Genres'
+                    onRemove={(selectedList) => handleSelect(selectedList)}
+                    onSelect={(selectedList) => handleSelect(selectedList)}
+                    options={genres}
+                    style={{
+                        multiselectContainer: {width: '300px', height:'3rem', marginBottom:'10px'},
+                        option: {background: 'darkslategray'},
+                        chips: {background: 'rgb(211, 47, 47)'},
+                        inputField: {fontSize: '16px',color: 'snow',height:'2rem', width:'130px'},
+                        searchBox: {fontSize: '16px',minHeight: '55px',background: 'snow'}
+                    }}
+                />
+            }
+        </div>
     );
 };
 

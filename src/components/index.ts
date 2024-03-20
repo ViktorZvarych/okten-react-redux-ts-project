@@ -4,5 +4,6 @@ export * from './Footer';
 export * from './Header';
 export * from './Loader';
 export * from './MovieContainer';
-export * from './SearchInput';
+export * from './SideBar';
+export * from './TopBar';
 export * from './UserInfo';
