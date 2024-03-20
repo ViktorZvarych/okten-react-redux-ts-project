@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 
 export const useScrollToTop = () => {
     const [position, setPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
@@ -11,25 +11,7 @@ export const useScrollToTop = () => {
         });
     }, [position]);
 
-    const scrollTopRef = useRef<HTMLSpanElement>(null);
+    const scrollToTopHandler = () => setPosition({ top: 0, left: 0 })
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (scrollTopRef.current) {
-                window.scrollY > 200
-                    ? (scrollTopRef.current.style.display = 'inline-block')
-                    : (scrollTopRef.current.style.display = 'none');
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    const scrollTopHandler = () => setPosition({ top: 0, left: 0 })
-
-    return {scrollTopHandler, scrollTopRef}
+    return {scrollToTopHandler}
 }

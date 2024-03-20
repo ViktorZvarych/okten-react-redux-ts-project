@@ -1,5 +1,4 @@
 import {FC} from "react";
-import {useNavigate} from "react-router-dom";
 
 import css from './MoviesList.module.css';
 import {IMovie} from "../../../interfaces";
@@ -11,9 +10,6 @@ interface IProps {
 }
 
 const MoviesList: FC<IProps> = ({movies}) => {
-    const navigate = useNavigate();
-
-    const handleNavigate = () => navigate(`../info/${movie.id}`)
 
     return (
         <section className={css.moviesList}>
@@ -23,8 +19,7 @@ const MoviesList: FC<IProps> = ({movies}) => {
                 <div>
                     <ul>
                         {movies.map((movie: IMovie) =>
-                            <li onClick={handleNavigate}
-                                key={movie.id}>
+                            <li key={movie.id}>
                                 <MoviesListCard movie={movie}/>
                             </li>)}
                     </ul>

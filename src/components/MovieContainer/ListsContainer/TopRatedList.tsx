@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import css from "../MoviesList/MoviesList.module.css";
 import {IMovie} from "../../../interfaces";
 import {MoviesListCard} from "../MoviesListCard";
-import {useAppDispatch, useAppSelector, useHandleNavigateAndScrollToTop} from "../../../hooks";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {topRatedMoviesActions} from "../../../store";
 
 const TopRatedList = () => {
@@ -12,10 +12,7 @@ const TopRatedList = () => {
 
     useEffect(() => {
         dispatch(topRatedMoviesActions.getTopRatedMovies())
-    }, []);
-
-
-    const handleNavigateAndScrollToTop = useHandleNavigateAndScrollToTop();
+    }, [dispatch]);
 
     return (
         <section className={css.moviesList}>
@@ -26,8 +23,7 @@ const TopRatedList = () => {
                 <div>
                     <ul>
                         {topRatedMovies.slice(0,8).map((movie: IMovie) =>
-                            <li onClick={handleNavigateAndScrollToTop}
-                                key={movie.id}>
+                            <li key={movie.id}>
                                 <MoviesListCard movie={movie}/>
                             </li>)}
                     </ul>
