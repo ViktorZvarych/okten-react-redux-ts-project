@@ -4,11 +4,11 @@ import css from './BackToTopButton.module.css';
 import {useScrollToTop} from '../../../hooks'
 
 const BackToTopButton: FC = () => {
-    const {scrollTopHandler, scrollTopRef} = useScrollToTop();
+    const {scrollToTopHandler, scrollToTopRef} = useScrollToTop();
 
     return (
         <>
-            <span onClick={scrollTopHandler} className={css.circle} ref={scrollTopRef}>
+            <span onClick={scrollToTopHandler} className={css.circle} ref={scrollToTopRef}>
                 To top
             </span>
         </>
