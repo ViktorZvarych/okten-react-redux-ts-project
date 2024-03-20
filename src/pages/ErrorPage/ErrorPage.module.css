@@ -1,0 +1,6 @@
+.errorPage {
+    padding-top: 80px;
+    min-height: 100vh;
+    background: darkslategray;
+    color: snow;
+}

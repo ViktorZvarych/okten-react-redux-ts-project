@@ -1,21 +1,18 @@
 import {FC} from "react";
-
-import {IGenre} from "../../../interfaces";
 import {useSearchParams} from "react-router-dom";
 
+import {IGenre} from "../../../interfaces";
 
 interface IProps {
     genre: IGenre;
 }
 
 const Genre: FC<IProps> = ({genre}) => {
-    console.log('render Genre');
-
     const {id} = genre;
 
     const [, setUrlParams] = useSearchParams();
 
-    const clickHandler = () => {
+    const handleSetParams = () => {
         setUrlParams(prev => {
             if (prev.get('with_genres')) {
                 prev.set('with_genres', prev.get('with_genres') + ',' + id.toString());
@@ -27,7 +24,7 @@ const Genre: FC<IProps> = ({genre}) => {
     };
 
     return (
-        <p onClick={clickHandler}>{genre.name}</p>
+        <p onClick={handleSetParams}>{genre.name}</p>
     );
 };
 

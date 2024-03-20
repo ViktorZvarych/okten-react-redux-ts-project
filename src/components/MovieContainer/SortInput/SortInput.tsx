@@ -7,8 +7,6 @@ import FormControl from '@mui/material/FormControl';
 import Select, {SelectChangeEvent} from '@mui/material/Select';
 
 const SortInput = () => {
-    console.log('render SortInput');
-
     const [, setUrlParams] = useSearchParams();
 
     const handleChange = (event: SelectChangeEvent) => {

@@ -1,30 +1,29 @@
 import {FC} from "react";
+import {useNavigate} from "react-router-dom";
 
 import css from './MoviesList.module.css';
 import {IMovie} from "../../../interfaces";
-import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
-import {PaginationCustom} from "../PaginationCustom/PaginationCustom";
-import {useNavigate} from "react-router-dom";
+import {MoviesListCard} from "../MoviesListCard";
+import {PaginationCustom} from "../PaginationCustom";
 
 interface IProps {
     movies: IMovie[]
 }
 
 const MoviesList: FC<IProps> = ({movies}) => {
-    console.log('render MoviesList');
-
     const navigate = useNavigate();
+
+    const handleNavigate = () => navigate(`../info/${movie.id}`)
 
     return (
         <section className={css.moviesList}>
-            {/*<h2>MoviesList</h2>*/}
             {
                 movies && typeof movies !== 'undefined'
                 &&
                 <div>
                     <ul>
                         {movies.map((movie: IMovie) =>
-                            <li onClick={() => navigate(`../info/${movie.id}`)}
+                            <li onClick={handleNavigate}
                                 key={movie.id}>
                                 <MoviesListCard movie={movie}/>
                             </li>)}

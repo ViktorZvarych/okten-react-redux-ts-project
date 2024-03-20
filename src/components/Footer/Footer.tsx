@@ -1,8 +1,6 @@
 import css from './Footer.module.css'
 
 const Footer = () => {
-    console.log('render Footer');
-
     return (
         <footer className={css.footer}>
             <p><b>© Developed by Viktor Zvarych</b></p>

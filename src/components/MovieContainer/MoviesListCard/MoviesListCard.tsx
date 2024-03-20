@@ -2,7 +2,7 @@ import {FC, memo} from "react";
 
 import css from './MoviesListCard.module.css';
 import {IMovie} from "../../../interfaces";
-import {StarsRating} from "../StarsRating/StarsRating";
+import {StarsRating} from "../StarsRating";
 import {urls} from "../../../constants";
 
 interface IProps {
@@ -10,7 +10,6 @@ interface IProps {
 }
 
 const MoviesListCard: FC<IProps> = memo(function Greeting({ movie }) {
-    console.log('render MoviesListCard');
     const {title, vote_average, backdrop_path } = movie;
 
     return (

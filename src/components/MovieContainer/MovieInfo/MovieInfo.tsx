@@ -3,13 +3,11 @@ import {useEffect, useState} from "react";
 
 import {IMovieDetails} from "../../../interfaces";
 import {moviesService} from "../../../services";
-import {MovieInfoCard} from "../MovieInfoCard/MovieInfoCard";
+import {MovieInfoCard} from "../MovieInfoCard";
+import {Videos} from "../Videos";
 
 const MovieInfo = () => {
-    console.log('render MovieInfoCard');
-
     const {id} = useParams();
-    console.log(id);
 
     const [movie, setMovie] = useState<IMovieDetails | null>(null);
 
@@ -28,11 +26,13 @@ const MovieInfo = () => {
 
     return (
         <div>
-            {/*<h2>MovieInfo</h2>*/}
             {
                 movie
                 &&
-                <MovieInfoCard movie={movie}/>
+                <div>
+                    <MovieInfoCard movieDetails={movie}/>
+                    <Videos id={movie.id}/>
+                </div>
             }
         </div>
     );

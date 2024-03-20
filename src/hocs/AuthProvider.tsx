@@ -4,7 +4,6 @@ import {FC, PropsWithChildren} from "react";
 import {authService} from "../services";
 
 interface IProps extends PropsWithChildren {
-
 }
 
 const AuthProvider: FC<IProps> = ({children}) => {

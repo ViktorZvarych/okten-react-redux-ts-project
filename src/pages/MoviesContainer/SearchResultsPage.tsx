@@ -1,11 +1,11 @@
 import {MoviesList} from "../../components";
 import {useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+
 import {IMovie} from "../../interfaces";
 import {moviesService} from "../../services";
 
 const SearchResultsPage = () => {
-    console.log('render SearchResultsPage');
     const [movies, setMovies] = useState<IMovie[] | null>(null);
 
     const [urlSearchParams, ] = useSearchParams();
@@ -16,8 +16,6 @@ const SearchResultsPage = () => {
         for (const [key, value] of urlSearchParams.entries()) {
             urlParams.push(`${key}=${value}`);
         }
-
-        console.log(urlParams[0])
 
         try {
             (async (): Promise<void> => {

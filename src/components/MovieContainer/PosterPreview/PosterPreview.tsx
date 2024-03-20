@@ -24,7 +24,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 const PosterPreview: FC<IProps> = ({imgUrl}) => {
-    console.log('render PosterPreview');
 
     const [open, setOpen] = useState<boolean>(false);
 
@@ -62,7 +61,6 @@ const PosterPreview: FC<IProps> = ({imgUrl}) => {
                     </IconButton>
                 </DialogContent>
             </BootstrapDialog>
-
         </div>
 
     );

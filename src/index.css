@@ -2,3 +2,19 @@
   margin: 0;
   padding: 0;
 }
+
+body {min-width: 500px}
+
+li {
+  list-style: none;
+}
+
+.logo {
+  color: black;
+  letter-spacing: 5px;
+  font-size: 1.7rem;
+  font-weight: 800;
+  background: linear-gradient(-45deg, #eeaa52, #e73c6f, #2394d5, #2af3b7);
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 6px transparent;
+}

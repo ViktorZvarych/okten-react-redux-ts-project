@@ -1,7 +1,4 @@
 const SignInPage = () => {
-    console.log('render SignInPage');
-
-
 
     return (
         <div>

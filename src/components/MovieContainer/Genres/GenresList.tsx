@@ -12,9 +12,6 @@ import {moviesService} from "../../../services";
 import {Genre} from "./Genre";
 
 const GenresList  = () => {
-
-    console.log('render GenresList');
-
     const [genresArr, setGenresArr] = useState<string[]>([]);
 
     const handleChange = (event: SelectChangeEvent<typeof genresArr>) => {
@@ -40,7 +37,6 @@ const GenresList  = () => {
         });
     }, [setUrlParams, genresArr])
 
-
     const {pathname, search} = useLocation();
 
     useEffect(() => {
@@ -64,11 +60,11 @@ const GenresList  = () => {
 
     return (
             <div>
-                <FormControl sx={{m: 1, width: 200}}>
-                    <InputLabel id="demo-multiple-chip-label">Genres</InputLabel>
+                <FormControl sx={{m: 1, minWidth: 200}}>
+                    <InputLabel id="multiple-chip-label">Genres</InputLabel>
                     <Select
-                        labelId="demo-multiple-chip-label"
-                        id="demo-multiple-chip"
+                        labelId="multiple-chip-label"
+                        id="multiple-chip"
                         multiple
                         value={genresArr}
                         onChange={handleChange}

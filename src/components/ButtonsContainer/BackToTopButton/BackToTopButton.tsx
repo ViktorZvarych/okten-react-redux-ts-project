@@ -4,8 +4,6 @@ import css from './BackToTopButton.module.css';
 import {useScrollToTop} from '../../../hooks'
 
 const BackToTopButton: FC = () => {
-    console.log('render BackToTopButton');
-
     const {scrollTopHandler, scrollTopRef} = useScrollToTop();
 
     return (

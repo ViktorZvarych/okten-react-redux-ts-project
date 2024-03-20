@@ -3,10 +3,7 @@ import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 
 import  css from './SearchInput.module.css'
 
-
 const SearchInput = () => {
-    console.log('render SearchResults');
-
     const [, setUrlParams] = useSearchParams();
 
     const navigate = useNavigate();

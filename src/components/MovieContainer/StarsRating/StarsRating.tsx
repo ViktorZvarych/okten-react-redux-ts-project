@@ -9,8 +9,6 @@ interface IProps {
 }
 
 const StarsRating: FC<IProps> = ({stars}) => {
-    console.log('render StarsRating');
-
     const [rating, setRating] = useState(0)
 
     useEffect(() => {
@@ -26,7 +24,6 @@ const StarsRating: FC<IProps> = ({stars}) => {
                     <p>{rating.toFixed(2)} of 10</p>
                 </div>
             )}
-
 
         </div>
     );

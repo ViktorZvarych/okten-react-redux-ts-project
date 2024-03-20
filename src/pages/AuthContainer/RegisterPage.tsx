@@ -1,7 +1,6 @@
 import {RegisterForm} from "../../components";
 
 const RegisterPage = () => {
-    console.log('render RegisterPage');
 
     return (
         <div>

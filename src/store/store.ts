@@ -1,4 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
+
 import {
     allMoviesReducer,
     loadingReducer,
@@ -9,8 +10,8 @@ import {
 
 const store = configureStore({
     reducer: {
-        allMovies: allMoviesReducer,
         loadingReducer,
+        allMovies: allMoviesReducer,
         popularMovies: popularMoviesReducer,
         topRatedMovies: topRatedMoviesReducer,
         upcomingMovies: upcomingMoviesReducer,

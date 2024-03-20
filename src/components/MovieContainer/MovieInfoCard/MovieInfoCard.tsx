@@ -1,21 +1,17 @@
-import {FC, useEffect, useState} from "react";
+import {FC} from "react";
 import Badge from '@mui/material/Badge';
 
 import css from './MovieInfoCard.module.css'
-import {IMovieDetails, IVideosObject} from "../../../interfaces";
-import {PosterPreview} from "../PosterPreview/PosterPreview";
-import {StarsRating} from "../StarsRating/StarsRating";
+import {IMovieDetails} from "../../../interfaces";
+import {PosterPreview} from "../PosterPreview";
+import {StarsRating} from "../StarsRating";
 import {urls} from "../../../constants";
-import {PopularList, TopRatedList, UpcomingList, Video} from "../../index";
-import {moviesService} from "../../../services";
 
 interface IProps {
-    movie: IMovieDetails
+    movieDetails: IMovieDetails
 }
 
-const MovieInfoCard: FC<IProps> = ({movie}) => {
-    console.log('render MovieInfoCard');
-
+const MovieInfoCard: FC<IProps> = ({movieDetails}) => {
     const {
         title,
         genres,
@@ -26,23 +22,8 @@ const MovieInfoCard: FC<IProps> = ({movie}) => {
         poster_path,
         budget,
         popularity,
-        backdrop_path,
-        id
-    } = movie;
-
-    const [videoData, setVideoData] = useState<IVideosObject | null>(null);
-
-
-    useEffect(() => {
-        try {
-            (async (): Promise<void> => {
-                const {data} = await moviesService.getVideos(id);
-                setVideoData(data);
-            })()
-        } catch (e) {
-            console.log(e);
-        }
-    }, [id])
+        backdrop_path
+    } = movieDetails;
 
     return (
         <div>
@@ -71,16 +52,8 @@ const MovieInfoCard: FC<IProps> = ({movie}) => {
                 </div>
             </article>
 
-            <div>
-                <h3>Trailers</h3>
-                {videoData &&
-                    videoData.results.filter(item => item.type === 'Trailer').slice(0, 2).map(item => <Video
-                        key={item.id} video={item}/>)}
-            </div>
 
-            <TopRatedList/>
-            <PopularList/>
-            <UpcomingList/>
+
         </div>
 
     );

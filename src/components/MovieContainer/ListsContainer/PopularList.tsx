@@ -1,32 +1,32 @@
-import {IMovie} from "../../../interfaces";
+import {useEffect} from "react";
+
 import css from "../MoviesList/MoviesList.module.css";
-import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
-import {useNavigate} from "react-router-dom";
-import {useMoviesListsContext, useScrollToTop} from "../../../hooks";
+import {IMovie} from "../../../interfaces";
+import {MoviesListCard} from "../MoviesListCard";
+import {useAppDispatch, useAppSelector, useHandleNavigateAndScrollToTop, useScrollToTop} from "../../../hooks";
+import {popularMoviesActions} from "../../../store";
 
 const PopularList = () => {
-    console.log('render PopularList');
+    const {popularMovies: {results: popularMovies}} = useAppSelector(state => state.popularMovies);
 
-    const moviesListsContext = useMoviesListsContext();
-    const popularMoviesList = moviesListsContext?.popularMoviesList;
+    const dispatch = useAppDispatch();
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        dispatch(popularMoviesActions.getPopularMovies())
+    }, []);
 
-    const {scrollTopHandler} = useScrollToTop();
+    const handleNavigateAndScrollToTop = useHandleNavigateAndScrollToTop();
 
     return (
         <section className={css.moviesList}>
             <h2>Most popular movies</h2>
             {
-                popularMoviesList
+                popularMovies
                 &&
                 <div>
                     <ul>
-                        {popularMoviesList.map((movie: IMovie) =>
-                            <li onClick={() => {
-                                navigate(`../info/${movie.id}`);
-                                scrollTopHandler()
-                            }}
+                        {popularMovies.slice(0,8).map((movie: IMovie) =>
+                            <li onClick={handleNavigateAndScrollToTop}
                                 key={movie.id}>
                                 <MoviesListCard movie={movie}/>
                             </li>)}

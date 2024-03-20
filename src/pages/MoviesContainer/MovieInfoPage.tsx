@@ -1,12 +1,13 @@
-import {MovieInfo} from "../../components";
+import {MovieInfo, PopularList, TopRatedList, UpcomingList} from "../../components";
 
 const MovieInfoPage = () => {
-    console.log('render MovieInfoPage');
-
     return (
         <div>
-            {/*<h2>MovieInfoPage</h2>*/}
             <MovieInfo/>
+
+            <TopRatedList/>
+            <PopularList/>
+            <UpcomingList/>
         </div>
     );
 };

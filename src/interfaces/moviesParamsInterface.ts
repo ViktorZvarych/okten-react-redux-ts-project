@@ -4,7 +4,3 @@ export interface IMoviesParams {
     // search: string;
     sort_by: string;
 }
-
-export interface newMovieParam {
-    movieKey: string
-}
