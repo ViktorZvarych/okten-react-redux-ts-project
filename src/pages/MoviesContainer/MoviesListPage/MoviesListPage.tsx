@@ -22,7 +22,6 @@ const MoviesListPage = () => {
                 <div>
                     <TopBar/>
 
-                    <h3 className={css.title}>All movies</h3>
                     <MoviesList movies={movies}/>
                 </div>
             }

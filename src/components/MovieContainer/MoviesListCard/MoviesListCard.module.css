@@ -3,19 +3,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 330px;
     box-shadow: 1px 3px 7px #dfdfdf;
 
     :hover{
         cursor: pointer;
     }
     img {
+        max-width: 90vw;
         width: 300px;
         height: 169px;
         color: #95a5a6;
         font-size: 12px;
-        min-width: 300px;
-        min-height: 169px;
         position: relative;
         transition: all .6s ease-in-out;
         &:hover{

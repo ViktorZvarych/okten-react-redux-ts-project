@@ -3,7 +3,9 @@
   padding: 0;
 }
 
-body {min-width: 350px}
+body {
+  min-width: 98vw;
+}
 
 li {
   list-style: none;

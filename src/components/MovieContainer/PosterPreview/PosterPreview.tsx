@@ -46,7 +46,7 @@ const PosterPreview: FC<IProps> = ({imgUrl}) => {
                 open={open}
             >
                 <DialogContent dividers>
-                    <img width="80%" src={urls.movies.poster(imgUrl)} alt="poster"/>
+                    <img className={css.img} src={urls.movies.poster(imgUrl)} alt="poster"/>
                     <IconButton
                         aria-label="close"
                         onClick={handleClose}

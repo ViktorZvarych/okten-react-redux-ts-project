@@ -23,7 +23,7 @@ const MoviesListCard: FC<IProps> = memo(function Greeting({ movie }) {
 
     return (
         <div className={css.moviesListCard} onClick={handleNavigateAndScrollToTop}>
-            <h3>{title[28] ? title.slice(0, 28) + '...' : title}</h3>
+            <h3>{title[28] ? title.slice(0, 22) + '...' : title}</h3>
             <img src={urls.movies.backdrop(backdrop_path, 300)} alt={title}/>
             <StarsRating stars={vote_average}/>
         </div>

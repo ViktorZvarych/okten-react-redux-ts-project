@@ -6,4 +6,9 @@
     :active {
         scale: 90%;
     }
+
+    .img {
+        width: 70vw;
+        max-width: 70vw;
+    }
 }

@@ -1,9 +1,10 @@
+import {FC} from "react";
+import {NavLink} from "react-router-dom";
+
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import {NavLink} from "react-router-dom";
 import Button from "@mui/material/Button";
 import Drawer from "@mui/material/Drawer";
-import {FC} from "react";
 
 interface IProps {
     mobileOpen: boolean,
@@ -14,7 +15,7 @@ const SideBar: FC<IProps> = ({mobileOpen, handleDrawerToggle}) => {
 
     return (
         <Drawer
-            anchor="right"
+            anchor="left"
             variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}

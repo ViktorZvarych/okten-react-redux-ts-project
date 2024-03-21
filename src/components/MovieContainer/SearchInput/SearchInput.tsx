@@ -1,7 +1,7 @@
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 
-import  css from './SearchInput.module.css'
+import css from './SearchInput.module.css'
 
 const SearchInput = () => {
     const [, setUrlParams] = useSearchParams();
@@ -22,9 +22,7 @@ const SearchInput = () => {
 
     return (
         <form className={css.searchInput} onSubmit={handleSubmit(onSubmit)}>
-
-            <input {...register("search", { required: true })} type="text"  name="search"/>
-
+            <input {...register("search", {required: true})} type="text" name="search"/>
             <button type="submit" className={css.btn}><span>🔍</span></button>
         </form>
     );

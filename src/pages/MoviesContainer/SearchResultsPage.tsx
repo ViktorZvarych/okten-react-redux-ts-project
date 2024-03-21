@@ -30,8 +30,6 @@ const SearchResultsPage = () => {
 
     return (
         <div>
-            <h2>MoviesListPage</h2>
-
             {movies && <MoviesList movies={movies}/>}
         </div>
     );

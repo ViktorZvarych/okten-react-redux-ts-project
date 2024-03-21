@@ -21,7 +21,7 @@ const TopRatedList = () => {
                 topRatedMovies
                 &&
                 <div>
-                    <ul>
+                    <ul className={css.container}>
                         {topRatedMovies.slice(0,8).map((movie: IMovie) =>
                             <li key={movie.id}>
                                 <MoviesListCard movie={movie}/>

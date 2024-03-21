@@ -19,8 +19,7 @@ const Video: FC<IProps> = ({video}) => {
             <div className={css.video}>
                 {site === 'YouTube' &&
                     <iframe
-                        width="560"
-                        height="315"
+                        className={css.iframe}
                         src={`https://www.youtube.com/embed/${key}`}
                         title="YouTube video player"
                         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

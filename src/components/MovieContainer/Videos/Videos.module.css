@@ -10,4 +10,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .iframe {
+        max-width: 90vw;
+        width: 900px;
+        aspect-ratio: 1.77;
+    }
 }

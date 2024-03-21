@@ -21,7 +21,7 @@ const UpcomingList = () => {
                 upcomingMovies
                 &&
                 <div>
-                    <ul>
+                    <ul className={css.container}>
                         {upcomingMovies.slice(0,8).map((movie: IMovie) =>
                             <li key={movie.id}>
                                 <MoviesListCard movie={movie}/>

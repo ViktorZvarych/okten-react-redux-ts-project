@@ -1,7 +1,8 @@
 
 .searchInput {
+
+    align-self: flex-end;
     height: 50px;
-    width: 20%;
     margin: 0 8%;
     position: relative;
 }
