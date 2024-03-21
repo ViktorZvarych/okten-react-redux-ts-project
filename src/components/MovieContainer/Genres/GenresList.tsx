@@ -26,20 +26,16 @@ const GenresList = () => {
     const handleSelect = (selectedList: IGenre[]) => {
         const selectedIds = selectedList.map(item => item.id).join(',');
 
-        const localSelectedGenresIds = localStorage.getItem('selectedGenresIds');
-
-        if (!selectedList && localSelectedGenresIds) {
-            console.log(localSelectedGenresIds)
-        } else {
-            localStorage.setItem('selectedGenresIds', selectedIds)
-        }
-
-        setUrlParams(`genres=${selectedIds}`);
+        setUrlParams(prev => {
+            prev.set('with_genres', selectedIds);
+            return prev;
+        })
     }
 
     return (
         <div>
-            {genres
+            {
+                genres
                 &&
                 <Multiselect
                     displayValue='name'
@@ -48,11 +44,11 @@ const GenresList = () => {
                     onSelect={(selectedList) => handleSelect(selectedList)}
                     options={genres}
                     style={{
-                        multiselectContainer: {width: '300px', height:'3rem', marginBottom:'10px'},
-                        option: {background: 'darkslategray'},
+                        multiselectContainer: {width: '300px', height: '3rem', marginBottom: '10px'},
+                        option: {background: 'rgb(211, 47, 47)'},
                         chips: {background: 'rgb(211, 47, 47)'},
-                        inputField: {fontSize: '16px',color: 'snow',height:'2rem', width:'130px'},
-                        searchBox: {fontSize: '16px',minHeight: '55px',background: 'snow'}
+                        inputField: {fontSize: '16px', color: 'snow', height: '2rem', width: '130px'},
+                        searchBox: {fontSize: '16px', minHeight: '55px', background: 'snow'}
                     }}
                 />
             }

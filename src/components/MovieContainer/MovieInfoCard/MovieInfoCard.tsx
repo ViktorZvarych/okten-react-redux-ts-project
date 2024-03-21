@@ -1,11 +1,11 @@
 import {FC} from "react";
-import Badge from '@mui/material/Badge';
 
 import css from './MovieInfoCard.module.css'
 import {IMovieDetails} from "../../../interfaces";
 import {PosterPreview} from "../PosterPreview";
 import {StarsRating} from "../StarsRating";
 import {urls} from "../../../constants";
+import {CustomBadge} from "../../CustomBadge";
 
 interface IProps {
     movieDetails: IMovieDetails
@@ -29,13 +29,12 @@ const MovieInfoCard: FC<IProps> = ({movieDetails}) => {
         <div>
             <article className={css.article}>
                 <div className={css.card}>
+
+
                     <div className={css.titleContainer}>
-                        <Badge
-                            badgeContent={genres.map(({name}) => name + '  ')}
-                            color="error"
-                            sx={{"& .MuiBadge-badge": {fontSize: 12, height: 36, minHeight: 15}}}>
-                            <h3 className={css.cardTitle}>{title}</h3>
-                        </Badge>
+                        <CustomBadge name={genres.map(({name}) => name).join(' ')}/>
+
+                        <h3 className={css.cardTitle}>{title}</h3>
                     </div>
 
                     <img src={urls.movies.backdrop(backdrop_path, 500)} alt={title}/>
@@ -51,11 +50,7 @@ const MovieInfoCard: FC<IProps> = ({movieDetails}) => {
                     <p>{overview}</p>
                 </div>
             </article>
-
-
-
         </div>
-
     );
 };
 

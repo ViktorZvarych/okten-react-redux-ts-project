@@ -5,6 +5,7 @@
 }
 
 .card {
+    position: relative;
     max-width: 70%;
     padding: 5vw;
     margin: 5vh 10vw;
@@ -15,7 +16,8 @@
 }
 
 .titleContainer {
-    width: 200px;
+    position: relative;
+    width: 300px;
     margin: 1.5rem auto;
 }
 

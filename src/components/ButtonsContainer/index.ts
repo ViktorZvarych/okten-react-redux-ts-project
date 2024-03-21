@@ -1,1 +1,2 @@
-export * from './BackToTopButton'
+export * from './BackToTopButton';
+export * from './LoginIcon';

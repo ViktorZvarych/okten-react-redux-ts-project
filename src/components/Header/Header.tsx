@@ -41,10 +41,10 @@ const Header = () => {
 
         if (isChecked) {
             authService.setToken(token);
-            navigate('/movies'); // Redirect to movies page after logging in
+            navigate('/movies');
         } else {
             authService.removeToken();
-            navigate('/login'); // Redirect to login page after logging out
+            navigate('/login');
         }
     };
 
@@ -79,9 +79,9 @@ const Header = () => {
                         <Toolbar>
                             <Typography variant="h6" component="div" sx={{flexGrow: 1}}
                             >
-                                <NavLink to={'movies'}>
+                                <NavLink to={`/`}>
                                     <Button sx={{color: 'snow'}}>
-                                        <h1 className='logo'>MovieDB</h1>
+                                        <h1 className='logo'>Movies</h1>
                                     </Button>
                                 </NavLink>
                             </Typography>

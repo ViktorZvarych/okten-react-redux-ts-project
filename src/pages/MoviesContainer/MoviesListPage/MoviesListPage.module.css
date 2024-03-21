@@ -1,4 +1,7 @@
-h3 {
-    padding-top: 20px;
-    text-align: center;
+.moviesListPage {
+    .title {
+        padding-top: 20px;
+        font-size: 2rem;
+        text-align: center;
+    }
 }

@@ -1,12 +1,13 @@
 import {useEffect} from "react";
 
+import css from './MoviesListPage.module.css'
 import {MoviesList, TopBar} from "../../../components";
 import {useAppDispatch, useAppSelector, useGetMovieParams} from "../../../hooks";
 import {allMoviesActions} from "../../../store";
 
 const MoviesListPage = () => {
 
-    const params = useGetMovieParams();
+    const params: string = useGetMovieParams();
 
     const {allMovies: {results: movies}} = useAppSelector(state => state.allMovies);
     const dispatch = useAppDispatch();
@@ -16,12 +17,12 @@ const MoviesListPage = () => {
     }, [dispatch, params]);
 
     return (
-        <div>
+        <div className={css.moviesListPage}>
             {movies &&
                 <div>
                     <TopBar/>
 
-                    <h3>All movies</h3>
+                    <h3 className={css.title}>All movies</h3>
                     <MoviesList movies={movies}/>
                 </div>
             }

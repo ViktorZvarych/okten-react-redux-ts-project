@@ -10,7 +10,10 @@ const SortInput = () => {
     const [, setUrlParams] = useSearchParams();
 
     const handleChange = (event: SelectChangeEvent) => {
-        setUrlParams(`sort_by=${event.target.value}`);
+        setUrlParams(prev => {
+            prev.set('sort_by', event.target.value);
+            return prev;
+        })
     };
 
     return (

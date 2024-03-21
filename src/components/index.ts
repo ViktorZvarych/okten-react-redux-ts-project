@@ -1,5 +1,6 @@
 export * from './AuthForms'
 export * from './ButtonsContainer';
+export * from './CustomBadge';
 export * from './Footer';
 export * from './Header';
 export * from './Loader';

@@ -1,7 +1,7 @@
 import {FC} from "react";
 
 import css from './TopBar.module.css';
-import {GenresList, SearchInput, SortInput} from "../MovieContainer";
+import {GenresList, SortInput} from "../MovieContainer";
 
 interface IProps {
 }

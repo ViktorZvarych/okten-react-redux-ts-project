@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import Pagination from '@mui/material/Pagination';
 import {useSearchParams} from "react-router-dom";
 
-import css from './PaginationCustom.module.css';
+import Pagination from '@mui/material/Pagination';
+
+import css from './CustomPagination.module.css';
 
 
-const PaginationCustom = () => {
+const CustomPagination = () => {
     const [currentPage, setCurrentPage] = useState<string>('');
 
     const [, setUrlParams] = useSearchParams();
@@ -38,4 +39,4 @@ const PaginationCustom = () => {
     );
 };
 
-export {PaginationCustom};
+export {CustomPagination};

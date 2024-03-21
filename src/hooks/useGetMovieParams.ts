@@ -13,7 +13,7 @@ const useGetMovieParams = () => {
             params.push(`${key}=${value}`);
         }
 
-        setUrlParams(params.join('&'))
+        setUrlParams(params.join('&'));
 
     }, [urlSearchParams]);
 
