@@ -1,3 +1,4 @@
+## Movie App
 # Vite
 # React
 # TypeScript
@@ -5,6 +6,8 @@
 # React Router
 # Redux
 # Redux Toolkit
+
+https://www.npmjs.com/package/multiselect-react-dropdown
 
 1. terminal: "npm i"
 2. terminal: "npm run dev"
