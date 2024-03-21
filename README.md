@@ -9,3 +9,6 @@
 1. terminal: "npm i"
 2. terminal: "npm run dev"
 3. browser: http://localhost:5173/
+
+
+https://react-spring-carousel.emilianobucci.com/docs/install
