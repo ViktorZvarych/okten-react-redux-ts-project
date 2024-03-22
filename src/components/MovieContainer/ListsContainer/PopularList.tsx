@@ -1,13 +1,12 @@
 import {useEffect} from "react";
 
 import css from "../MoviesList/MoviesList.module.css";
-import {IMovie} from "../../../interfaces";
-import {MoviesListCard} from "../MoviesListCard";
 import {
     useAppDispatch,
     useAppSelector
 } from "../../../hooks";
 import {popularMoviesActions} from "../../../store";
+import {Slider} from "../../Slider";
 
 const PopularList = () => {
     const {popularMovies: {results: popularMovies}} = useAppSelector(state => state.popularMovies);
@@ -20,18 +19,12 @@ const PopularList = () => {
 
     return (
         <section className={css.moviesList}>
+            <hr/>
             <h2>Most popular movies</h2>
             {
                 popularMovies
                 &&
-                <div>
-                    <ul className={css.container}>
-                        {popularMovies.slice(0,8).map((movie: IMovie) =>
-                            <li key={movie.id}>
-                                <MoviesListCard movie={movie}/>
-                            </li>)}
-                    </ul>
-                </div>
+                <Slider movies={popularMovies.slice(0, 8)}/>
             }
             <hr/>
         </section>

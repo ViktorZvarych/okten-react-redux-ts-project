@@ -10,19 +10,27 @@ import css from './Slider.module.css';
 import './styles.css';
 import {IMovie} from "../../interfaces";
 import {urls} from "../../constants";
+import {useHandleNavigateToMovie, useScrollToTop} from "../../hooks";
 
 interface IProps {
     movies: IMovie[];
 }
 
 const Slider: FC<IProps> = ({movies}) => {
+    const {scrollToTopHandler} = useScrollToTop();
+    const navigateToMovie = useHandleNavigateToMovie();
+
+    const handleNavigateAndScrollToTop = (id:number) => {
+        scrollToTopHandler();
+        navigateToMovie(id);
+    }
 
     return (
         <div className={css.Slider}>
 
             <Swiper
                 autoplay={{
-                    delay: 2000,
+                    delay: 2500,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -47,9 +55,11 @@ const Slider: FC<IProps> = ({movies}) => {
             >
 
                 {
-                    movies.map(({id, backdrop_path}) => (
+                    movies.map(({id, backdrop_path,title}) => (
                         <SwiperSlide key={id}>
-                            <img src={urls.movies.backdrop(backdrop_path, 500)} />
+                            <div onClick={()=>handleNavigateAndScrollToTop(id)}>
+                                <img src={urls.movies.backdrop(backdrop_path, 500)} alt={title}/>
+                            </div>
                         </SwiperSlide>
                     ))
                 }

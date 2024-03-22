@@ -3,19 +3,21 @@
     display: none;
     bottom: 5vh;
     right:5vw;
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
-    font-size: 1rem;
-    line-height: 3rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    line-height: 2.5rem;
     color: snow;
     background: rgb(211, 47, 47);
     padding:10px;
     text-align:center;
     vertical-align: middle;
-    border: 1px solid black;
+    border: 1px solid darkslategray;
     box-shadow: 1px 3px 7px 0 snow;
     box-sizing: border-box;
+    z-index: 10;
 }
 
 .circle:hover {
