@@ -9,8 +9,6 @@ const TopRatedList = () => {
     const {topRatedMovies: {results: topRatedMovies}} = useAppSelector(state => state.topRatedMovies);
     const dispatch = useAppDispatch();
 
-
-
     useEffect(() => {
         dispatch(topRatedMoviesActions.getTopRatedMovies())
     }, [dispatch]);

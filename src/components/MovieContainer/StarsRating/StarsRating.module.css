@@ -1,3 +1,7 @@
 .starsRating {
     align-self: center;
+
+    p {
+        text-align: center;
+    }
 }

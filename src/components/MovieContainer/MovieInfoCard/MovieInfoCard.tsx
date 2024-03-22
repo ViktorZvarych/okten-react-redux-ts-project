@@ -34,7 +34,7 @@ const MovieInfoCard: FC<IProps> = ({movieDetails}) => {
                     <div className={css.titleContainer}>
                         <CustomBadge name={genres.map(({name}) => name).join(' ')}/>
 
-                        <h3 className={css.cardTitle}>{title}</h3>
+                        <h2 className={css.cardTitle}>{title}</h2>
                     </div>
 
                     <img src={urls.movies.backdrop(backdrop_path, 500)} alt={title}/>

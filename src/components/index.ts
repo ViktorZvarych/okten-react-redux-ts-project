@@ -3,6 +3,7 @@ export * from './ButtonsContainer';
 export * from './CustomBadge';
 export * from './Footer';
 export * from './Header';
+export * from './HeroBanner';
 export * from './Loader';
 export * from './MovieContainer';
 export * from './SideBar';

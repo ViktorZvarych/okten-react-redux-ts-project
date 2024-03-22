@@ -6,7 +6,6 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-import css from './Slider.module.css';
 import './styles.css';
 import {IMovie} from "../../interfaces";
 import {urls} from "../../constants";
@@ -26,9 +25,13 @@ const Slider: FC<IProps> = ({movies}) => {
     }
 
     return (
-        <div className={css.Slider}>
+        <div className="Slider">
 
             <Swiper
+                style={{
+                    '--swiper-navigation-color': '#fff',
+                    '--swiper-pagination-color': '#fff',
+                }}
                 autoplay={{
                     delay: 2500,
                     disableOnInteraction: false,
@@ -37,7 +40,7 @@ const Slider: FC<IProps> = ({movies}) => {
                     clickable: true,
                 }}
                 loop={true}
-                navigation={true}
+                // navigation={true}
                 effect={'coverflow'}
                 grabCursor={true}
                 centeredSlides={true}
@@ -55,15 +58,14 @@ const Slider: FC<IProps> = ({movies}) => {
             >
 
                 {
-                    movies.map(({id, backdrop_path,title}) => (
+                    movies.map(({id, backdrop_path, title}) => (
                         <SwiperSlide key={id}>
-                            <div onClick={()=>handleNavigateAndScrollToTop(id)}>
+                            <div onClick={() => handleNavigateAndScrollToTop(id)}>
                                 <img src={urls.movies.backdrop(backdrop_path, 500)} alt={title}/>
                             </div>
                         </SwiperSlide>
                     ))
                 }
-
             </Swiper>
 
         </div>

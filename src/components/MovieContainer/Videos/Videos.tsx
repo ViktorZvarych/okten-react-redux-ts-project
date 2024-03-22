@@ -25,12 +25,15 @@ const Videos: FC<IProps> = ({id}) => {
 
     return (
         <div className={css.videos}>
-            <h3>Trailers</h3>
-            {videoData &&
+
+            {
+                videoData
+                &&
                 videoData.results
                     .filter(item => item.type === 'Trailer')
                     .map(item => <Video
-                    key={item.id} video={item}/>)}
+                        key={item.id} video={item}/>)
+            }
         </div>
     );
 };
