@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 
 import css from './MoviesListPage.module.css'
-import {MoviesList, Slider, slides, TopBar} from "../../../components";
+import {MoviesList, Slider, TopBar} from "../../../components";
 import {useAppDispatch, useAppSelector, useGetMovieParams} from "../../../hooks";
 import {allMoviesActions} from "../../../store";
 
@@ -21,7 +21,8 @@ const MoviesListPage = () => {
             {movies &&
                 <div>
                     <TopBar/>
-                    <Slider slides={slides}/>
+                    <Slider movies={movies
+                        .slice(0,8)}/>
                     <MoviesList movies={movies}/>
                 </div>
             }
