@@ -11,4 +11,4 @@
 3. browser: http://localhost:5173/
 
 
-https://react-spring-carousel.emilianobucci.com/docs/install
+@react-spring/web

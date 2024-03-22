@@ -1,0 +1,94 @@
+:root {
+    --item-width: 185px;
+    --item-height: 240px;
+    background-color: #333;
+}
+
+.app {
+    font-family: sans-serif;
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #333;
+}
+
+.cover {
+    --url: '';
+    background-image: var(--url);
+    background-size: cover;
+    background-color: #333;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+.coverName {
+    margin: 20px 0 0 20px;
+    color: #fff;
+    font-size: 2em;
+    text-shadow: 0 0 1px #333;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 550px;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.header {
+    height: 540px;
+    position: relative;
+}
+
+.youtube {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border: none;
+}
+
+.rows {
+    translate: 0 -50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
+    position: relative;
+    height: calc(var(--item-height) + 40px);
+    overflow: hidden;
+    width: 960px;
+    padding: 20px;
+    background: #222;
+    outline: none;
+}
+
+.item {
+    --url: '';
+    background-image: var(--url);
+    background-size: cover;
+    position: absolute;
+    width: var(--item-width);
+    height: var(--item-height);
+    color: #fff;
+    border-radius: 3px;
+}
+
+.focusIndicator {
+    width: calc(var(--item-width) + 4px);
+    height: calc(var(--item-height) + 4px);
+    border: 2px solid #fff;
+    translate: calc(var(--item-width) + 18px - 90px) -2px;
+    position: absolute;
+    border-radius: 3px;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
