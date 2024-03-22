@@ -6,5 +6,7 @@ export * from './Header';
 export * from './Loader';
 export * from './MovieContainer';
 export * from './SideBar';
+export * from './Slider';
 export * from './TopBar';
 export * from './UserInfo';
+export * from './YoutubePlayer';
