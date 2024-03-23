@@ -18,7 +18,7 @@ const initialState: IState = {
 };
 
 const getPopularMovies = createAsyncThunk<IMovies, void>(
-    'getTopRatedMovies/getTopRatedMovies',
+    'popularSlice/getTopRatedMovies',
     async (_, {rejectWithValue}) => {
         try {
             const {data} = await moviesService.getPopularList();

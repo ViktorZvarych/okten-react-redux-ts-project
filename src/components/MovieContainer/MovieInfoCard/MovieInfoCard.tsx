@@ -30,7 +30,6 @@ const MovieInfoCard: FC<IProps> = ({movieDetails}) => {
             <article className={css.article}>
                 <div className={css.card}>
 
-
                     <div className={css.titleContainer}>
                         <CustomBadge name={genres.map(({name}) => name).join(' ')}/>
 

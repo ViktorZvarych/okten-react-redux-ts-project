@@ -8,6 +8,7 @@ import {
     topRatedMoviesReducer,
     upcomingMoviesReducer
 } from "./slices";
+import {selectedMovieReducer} from "./slices/selectedMovieSlice.ts";
 
 const store = configureStore({
     reducer: {
@@ -15,6 +16,7 @@ const store = configureStore({
         allMovies: allMoviesReducer,
         genres: genresReducer,
         popularMovies: popularMoviesReducer,
+        selectedMovie: selectedMovieReducer,
         topRatedMovies: topRatedMoviesReducer,
         upcomingMovies: upcomingMoviesReducer,
     }

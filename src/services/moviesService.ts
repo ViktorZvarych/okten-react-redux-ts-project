@@ -11,7 +11,6 @@ const moviesService = {
 
     getMovieDetailsById: (id: number): IRes<IMovieDetails> => apiService.get(urls.movies.movieDetailsById(id)),
     getVideos: (id: number): IRes<IVideosObject> => apiService.get(urls.movies.videos(id)),
-    getReviews: (id: number): IRes<[]> => apiService.get(urls.movies.reviews(id)),
 
     getPopularList: (): IRes<IMovies> => apiService.get(urls.movies.popularList),
     getTopRatedList: (): IRes<IMovies> => apiService.get(urls.movies.topRatedList),

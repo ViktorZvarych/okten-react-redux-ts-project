@@ -1,28 +1,21 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
-import {IMovieDetails} from "../../../interfaces";
-import {moviesService} from "../../../services";
 import {MovieInfoCard} from "../MovieInfoCard";
 import {Videos} from "../Videos";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
+import {selectedMovieActions} from "../../../store/slices/selectedMovieSlice.ts";
 
 const MovieInfo = () => {
     const {id} = useParams();
 
-    const [movie, setMovie] = useState<IMovieDetails | null>(null);
+    const {selectedMovie: movie} = useAppSelector(state => state.selectedMovie);
+
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        try {
-            (async () => {
-                if (id) {
-                    const {data} = await moviesService.getMovieDetailsById(+id);
-                    setMovie(data);
-                }
-            })()
-        } catch (e) {
-            console.log(e);
-        }
-    }, [id]);
+        id && dispatch(selectedMovieActions.getSelectedMovie(+id))
+    }, [dispatch, id]);
 
     return (
         <div>
