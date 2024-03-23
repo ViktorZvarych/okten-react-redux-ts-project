@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {CSSProperties, FC} from "react";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -31,7 +31,7 @@ const Slider: FC<IProps> = ({movies}) => {
                 style={{
                     '--swiper-navigation-color': '#fff',
                     '--swiper-pagination-color': '#fff',
-                }}
+                } as CSSProperties}
                 autoplay={{
                     delay: 2500,
                     disableOnInteraction: false,

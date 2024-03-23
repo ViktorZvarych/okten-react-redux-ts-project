@@ -11,4 +11,4 @@
 3. browser: http://localhost:5173/
 
 
-@react-spring/web
+https://www.npmjs.com/package/swiper

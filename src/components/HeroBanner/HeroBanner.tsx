@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {CSSProperties, useEffect, useState} from "react";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Navigation, Thumbs } from 'swiper/modules';
@@ -6,11 +6,11 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-import css from './HeroBanner.module.css';
+// import css from './HeroBanner.module.css';
 import './styles.css';
-import {urls} from "../../constants";
 import {useAppDispatch, useAppSelector, useHandleNavigateToMovie, useScrollToTop} from "../../hooks";
 import {topRatedMoviesActions} from "../../store";
+import {urls} from "../../constants";
 
 
 const HeroBanner = () => {
@@ -21,8 +21,9 @@ const HeroBanner = () => {
         dispatch(topRatedMoviesActions.getTopRatedMovies())
     }, [dispatch]);
 
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
-    // <typeof Swiper | null >
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    const [thumbsSwiper, setThumbsSwiper] = useState<Swiper | null>(null);
     const {scrollToTopHandler} = useScrollToTop();
     const navigateToMovie = useHandleNavigateToMovie();
 
@@ -39,7 +40,7 @@ const HeroBanner = () => {
                 style={{
                     '--swiper-navigation-color': '#fff',
                     '--swiper-pagination-color': '#fff',
-                }}
+                } as CSSProperties}
                 autoplay={{
                     delay: 3500,
                     disableOnInteraction: false,
