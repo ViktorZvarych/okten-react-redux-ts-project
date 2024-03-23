@@ -14,7 +14,6 @@ const initialState: IState = {
         genres:                [],
         id:                    0,
         poster_path:           '',
-        release_date:          new Date("2024-03-22"),
         title:                 '',
         video:                 false,
         vote_average:          0,

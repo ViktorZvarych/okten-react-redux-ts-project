@@ -1,5 +1,5 @@
 export interface IVideosObject {
-    id:      number;
+    id?:      number;
     results: IVideosResult[];
 }
 

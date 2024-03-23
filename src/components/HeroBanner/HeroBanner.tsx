@@ -11,6 +11,7 @@ import './styles.css';
 import {useAppDispatch, useAppSelector, useHandleNavigateToMovie, useScrollToTop} from "../../hooks";
 import {topRatedMoviesActions} from "../../store";
 import {urls} from "../../constants";
+import {YoutubePlayer} from "../YoutubePlayer";
 
 
 const HeroBanner = () => {
@@ -41,10 +42,7 @@ const HeroBanner = () => {
                     '--swiper-navigation-color': '#fff',
                     '--swiper-pagination-color': '#fff',
                 } as CSSProperties}
-                autoplay={{
-                    delay: 3500,
-                    disableOnInteraction: false,
-                }}
+
 
                 loop={true}
                 spaceBetween={10}
@@ -54,10 +52,11 @@ const HeroBanner = () => {
                 className="mySwiper2"
             >
                 {
-                    topRatedMovies.map(({id, backdrop_path, title}) => (
+                    topRatedMovies.slice(0,4).map(({id, backdrop_path, title}) => (
                         <SwiperSlide key={id}>
                             <div onClick={() => handleNavigateAndScrollToTop(id)}>
-                                <img src={urls.movies.backdrop(backdrop_path, 500)} alt={title}/>
+                                {/*<img src={urls.movies.backdrop(backdrop_path, 500)} alt={title}/>*/}
+                                <YoutubePlayer id={id}/>
                             </div>
                         </SwiperSlide>
                     ))
@@ -76,7 +75,7 @@ const HeroBanner = () => {
                 className="mySwiper"
             >
                 {
-                    topRatedMovies.map(({id, backdrop_path, title}) => (
+                    topRatedMovies.slice(0,4).map(({id, backdrop_path, title}) => (
                         <SwiperSlide key={id}>
                             <img src={urls.movies.backdrop(backdrop_path, 300)} alt={title}/>
                         </SwiperSlide>

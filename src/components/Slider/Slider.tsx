@@ -1,7 +1,7 @@
 import {CSSProperties, FC} from "react";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -40,20 +40,15 @@ const Slider: FC<IProps> = ({movies}) => {
                     clickable: true,
                 }}
                 loop={true}
-                // navigation={true}
-                effect={'coverflow'}
+                spaceBetween={20}
+                navigation={true}
                 grabCursor={true}
                 centeredSlides={true}
                 slidesPerView={'auto'}
-                coverflowEffect={{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                }}
+                
 
-                modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
+
+                modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
 

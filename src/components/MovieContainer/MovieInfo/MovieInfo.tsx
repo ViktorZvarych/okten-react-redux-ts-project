@@ -4,7 +4,7 @@ import {useEffect} from "react";
 import {MovieInfoCard} from "../MovieInfoCard";
 import {Videos} from "../Videos";
 import {useAppDispatch, useAppSelector} from "../../../hooks";
-import {selectedMovieActions} from "../../../store/slices/selectedMovieSlice.ts";
+import {selectedMovieActions} from "../../../store";
 
 const MovieInfo = () => {
     const {id} = useParams();
