@@ -21,7 +21,7 @@ const TopRatedList = () => {
                 topRatedMovies
                 &&
                 <Slider
-                    movies={topRatedMovies.slice(0,8)}
+                    movies={topRatedMovies.slice(0,12)}
                 />
             }
             <hr/>

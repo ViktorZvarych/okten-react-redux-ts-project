@@ -20,7 +20,7 @@ const UpcomingList = () => {
             {
                 upcomingMovies
                 &&
-                <Slider movies={upcomingMovies.slice(0, 8)}/>
+                <Slider movies={upcomingMovies.slice(0, 12)}/>
             }
             <hr/>
         </section>

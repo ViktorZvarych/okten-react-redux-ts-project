@@ -8,8 +8,8 @@ import 'swiper/css/pagination';
 
 import './styles.css';
 import {IMovie} from "../../interfaces";
-import {urls} from "../../constants";
 import {useHandleNavigateToMovie, useScrollToTop} from "../../hooks";
+import {MoviesListCard} from "../MovieContainer";
 
 interface IProps {
     movies: IMovie[];
@@ -33,7 +33,7 @@ const Slider: FC<IProps> = ({movies}) => {
                     '--swiper-pagination-color': '#fff',
                 } as CSSProperties}
                 autoplay={{
-                    delay: 2500,
+                    delay: 2700,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -45,18 +45,15 @@ const Slider: FC<IProps> = ({movies}) => {
                 grabCursor={true}
                 centeredSlides={true}
                 slidesPerView={'auto'}
-                
-
-
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper"
+                className="mySliper"
             >
 
                 {
-                    movies.map(({id, backdrop_path, title}) => (
-                        <SwiperSlide key={id}>
-                            <div onClick={() => handleNavigateAndScrollToTop(id)}>
-                                <img src={urls.movies.backdrop(backdrop_path, 500)} alt={title}/>
+                    movies.map((movie) => (
+                        <SwiperSlide key={movie.id}>
+                            <div onClick={() => handleNavigateAndScrollToTop(movie.id)}>
+                                <MoviesListCard movie={movie} width={300}/>
                             </div>
                         </SwiperSlide>
                     ))

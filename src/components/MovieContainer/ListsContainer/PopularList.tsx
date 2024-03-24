@@ -24,7 +24,7 @@ const PopularList = () => {
             {
                 popularMovies
                 &&
-                <Slider movies={popularMovies.slice(0, 8)}/>
+                <Slider movies={popularMovies.slice(0, 12)}/>
             }
             <hr/>
         </section>

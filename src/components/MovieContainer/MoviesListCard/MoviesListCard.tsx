@@ -7,10 +7,11 @@ import {urls} from "../../../constants";
 import {useHandleNavigateToMovie, useScrollToTop} from "../../../hooks";
 
 interface IProps {
-    movie: IMovie
+    movie: IMovie,
+    width: 300 | 500
 }
 
-const MoviesListCard: FC<IProps> = memo(function Greeting({ movie }) {
+const MoviesListCard: FC<IProps> = memo(function Greeting({ movie, width }) {
     const {title, vote_average, backdrop_path, id} = movie;
 
     const {scrollToTopHandler} = useScrollToTop();
@@ -24,7 +25,7 @@ const MoviesListCard: FC<IProps> = memo(function Greeting({ movie }) {
     return (
         <div className={css.moviesListCard} onClick={handleNavigateAndScrollToTop}>
             <h3>{title[28] ? title.slice(0, 22) + '...' : title}</h3>
-            <img src={urls.movies.backdrop(backdrop_path, 300)} alt={title}/>
+            <img src={urls.movies.backdrop(backdrop_path, width)} alt={title}/>
             <StarsRating stars={vote_average}/>
         </div>
     );

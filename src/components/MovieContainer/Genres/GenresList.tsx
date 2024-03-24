@@ -4,25 +4,35 @@ import {useSearchParams} from "react-router-dom";
 import {Multiselect} from "multiselect-react-dropdown";
 
 import {IGenre} from "../../../interfaces";
-import {moviesService} from "../../../services";
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {genresActions} from "../../../store";
 
 const GenresList = () => {
+    const [selectedValues, setSelectedValues] = useState<IGenre[]>([])
 
     const [, setUrlParams] = useSearchParams();
 
-    const {genres} = useAppSelector(state => state.genres);
+    const {genres, selectedGenres} = useAppSelector(state => state.genres);
+
+    useEffect(() => {
+        setSelectedValues(selectedGenres);
+
+        const selectedIds = selectedGenres.map(item => item.id).join(',');
+
+        setUrlParams(prev => {
+            prev.set('with_genres', selectedIds);
+            return prev;
+        })
+        
+    }, []);
+    // Don`t(!) update dependencies array to be [selectedGenres, setUrlParams]
+
 
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(genresActions.getGenresNames())
+        dispatch(genresActions.getGenres())
     }, [dispatch]);
-
-    useEffect(() => {
-        console.log(genres)
-    }, [genres]);
 
     const handleSelect = (selectedList: IGenre[]) => {
         const selectedIds = selectedList.map(item => item.id).join(',');
@@ -31,6 +41,8 @@ const GenresList = () => {
             prev.set('with_genres', selectedIds);
             return prev;
         })
+
+        dispatch(genresActions.setGenresNames([...selectedList]));
     }
 
     return (
@@ -39,11 +51,12 @@ const GenresList = () => {
                 genres
                 &&
                 <Multiselect
+                    selectedValues={selectedValues}
                     displayValue='name'
                     placeholder='Select Genres'
                     onRemove={(selectedList) => handleSelect(selectedList)}
                     onSelect={(selectedList) => handleSelect(selectedList)}
-                    options={genres.reduce((names, genre) => [...names, genre.name], [])}
+                    options={genres}
                     style={{
                         multiselectContainer: {width: '300px', height: '3rem', marginBottom: '10px'},
                         option: {background: 'rgb(211, 47, 47)'},

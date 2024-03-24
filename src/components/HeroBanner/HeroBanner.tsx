@@ -8,11 +8,10 @@ import 'swiper/css/thumbs';
 
 // import css from './HeroBanner.module.css';
 import './styles.css';
-import {useAppDispatch, useAppSelector, useHandleNavigateToMovie, useScrollToTop} from "../../hooks";
+import {useAppDispatch, useAppSelector} from "../../hooks";
 import {topRatedMoviesActions} from "../../store";
 import {urls} from "../../constants";
-import {YoutubePlayer} from "../YoutubePlayer";
-import {MoviesListCard, Videos} from "../MovieContainer";
+import {MoviesListCard, PopularList, UpcomingList} from "../MovieContainer";
 
 
 const HeroBanner = () => {
@@ -26,13 +25,7 @@ const HeroBanner = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     const [thumbsSwiper, setThumbsSwiper] = useState<Swiper | null>(null);
-    const {scrollToTopHandler} = useScrollToTop();
-    const navigateToMovie = useHandleNavigateToMovie();
 
-    const handleNavigateAndScrollToTop = (id: number) => {
-        scrollToTopHandler();
-        navigateToMovie(id);
-    }
 
     return (
         <div className="HeroBanner">
@@ -53,15 +46,17 @@ const HeroBanner = () => {
                 className="mySwiper2"
             >
                 {
-                    topRatedMovies.slice(0,8).map((movie) => (
+                    topRatedMovies.slice(0, 8).map((movie) => (
                         <SwiperSlide key={movie.id}>
                             <div>
-                                <MoviesListCard movie={movie}/>
+                                <MoviesListCard movie={movie} width={500}/>
                             </div>
                         </SwiperSlide>
                     ))
                 }
             </Swiper>
+
+            <hr/>
 
             <Swiper
                 onSwiper={setThumbsSwiper}
@@ -72,10 +67,10 @@ const HeroBanner = () => {
                 freeMode={true}
                 watchSlidesProgress={true}
                 modules={[FreeMode, Navigation, Thumbs]}
-                className="mySwiper"
+                className="myHeroSwiper"
             >
                 {
-                    topRatedMovies.slice(0,8).map(({id, backdrop_path, title}) => (
+                    topRatedMovies.slice(0, 8).map(({id, backdrop_path, title}) => (
                         <SwiperSlide key={id}>
                             <img src={urls.movies.backdrop(backdrop_path, 300)} alt={title}/>
                         </SwiperSlide>
@@ -83,7 +78,9 @@ const HeroBanner = () => {
                 }
             </Swiper>
 
-            <hr/>
+            <PopularList/>
+
+            <UpcomingList/>
 
         </div>
     );

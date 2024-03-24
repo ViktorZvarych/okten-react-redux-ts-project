@@ -20,7 +20,7 @@ const MoviesList: FC<IProps> = ({movies}) => {
                     <ul className={css.container}>
                         {movies.map((movie: IMovie) =>
                             <li key={movie.id}>
-                                <MoviesListCard movie={movie}/>
+                                <MoviesListCard movie={movie} width={300}/>
                             </li>)}
                     </ul>
 
