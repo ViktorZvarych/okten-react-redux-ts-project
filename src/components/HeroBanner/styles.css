@@ -35,8 +35,8 @@
     }
 
     .mySwiper2 {
-        height: 70vh;
-        width: 90vw;
+        height: 80vh;
+        max-width: 90vw;
     }
 
     .mySwiper2 img {

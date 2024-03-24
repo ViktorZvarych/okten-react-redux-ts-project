@@ -6,4 +6,3 @@ export * from './selectedMovieSlice.ts';
 export * from './topRatedMoviesSlice.ts';
 export * from './upcomingMoviesSlice.ts';
 export * from './videosSlice.ts';
-export * from './youTubeLinkSlice.ts';

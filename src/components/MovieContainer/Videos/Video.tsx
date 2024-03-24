@@ -3,6 +3,7 @@ import {FC} from "react";
 import css from "./Videos.module.css";
 import {IVideosResult} from "../../../interfaces";
 import {formatDateStringService} from "../../../services";
+import {urls} from "../../../constants";
 
 interface IProps {
     video: IVideosResult
@@ -20,7 +21,7 @@ const Video: FC<IProps> = ({video}) => {
                 {site === 'YouTube' &&
                     <iframe
                         className={css.iframe}
-                        src={`https://www.youtube.com/embed/${key}`}
+                        src={urls.movies.youtube(key)}
                         title="YouTube video player"
                         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen>

@@ -26,6 +26,7 @@ const Videos: FC<IProps> = ({id}) => {
                 &&
                 videoData.results
                     .filter(item => item.type === 'Trailer')
+                    .slice(0,1)
                     .map(item => <Video
                         key={item.id} video={item}/>)
             }

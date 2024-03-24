@@ -5,11 +5,11 @@ import {
     genresReducer,
     loadingReducer,
     popularMoviesReducer,
+    selectedMovieReducer,
     topRatedMoviesReducer,
-    upcomingMoviesReducer, youTubeLinkReducer
+    videosReducer,
+    upcomingMoviesReducer
 } from "./slices";
-import {selectedMovieReducer} from "./slices/selectedMovieSlice.ts";
-import {videosReducer} from "./slices/videosSlice.ts";
 
 const store = configureStore({
     reducer: {
@@ -20,8 +20,7 @@ const store = configureStore({
         selectedMovie: selectedMovieReducer,
         topRatedMovies: topRatedMoviesReducer,
         upcomingMovies: upcomingMoviesReducer,
-        videosObject: videosReducer,
-        youTubLink: youTubeLinkReducer
+        videosObject: videosReducer
     }
 })
 

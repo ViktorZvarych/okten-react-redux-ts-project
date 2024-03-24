@@ -13,10 +13,8 @@ const urls = {
         backdrop: (imgUrl: string, width: number) => `https://image.tmdb.org/t/p/w${width}${imgUrl}`,
         poster: (imgUrl: string) => `https://image.tmdb.org/t/p/w500/${imgUrl}`,
         videos: (id: number) => `${movie}/${id}/videos`,
-        reviews: (id: number) => `${movie}/${id}/reviews`,
-        rating: (id: number) => `${movie}/${id}/rating`,
 
-        youtubeLink: (id: number) => `https://youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&rel=0`,
+        youtube: (key: string) => `https://youtube.com/embed/${key}`,
 
 
         popularList: `${movie}/popular`,

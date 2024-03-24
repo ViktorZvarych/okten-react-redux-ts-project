@@ -5,23 +5,24 @@ import {Multiselect} from "multiselect-react-dropdown";
 
 import {IGenre} from "../../../interfaces";
 import {moviesService} from "../../../services";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
+import {genresActions} from "../../../store";
 
 const GenresList = () => {
 
     const [, setUrlParams] = useSearchParams();
 
-    const [genres, setGenres] = useState<IGenre[] | null>(null);
+    const {genres} = useAppSelector(state => state.genres);
+
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        try {
-            (async (): Promise<void> => {
-                const {data} = await moviesService.getGenres();
-                setGenres(data.genres);
-            })()
-        } catch (e) {
-            console.log(e);
-        }
-    }, [])
+        dispatch(genresActions.getGenresNames())
+    }, [dispatch]);
+
+    useEffect(() => {
+        console.log(genres)
+    }, [genres]);
 
     const handleSelect = (selectedList: IGenre[]) => {
         const selectedIds = selectedList.map(item => item.id).join(',');
@@ -42,7 +43,7 @@ const GenresList = () => {
                     placeholder='Select Genres'
                     onRemove={(selectedList) => handleSelect(selectedList)}
                     onSelect={(selectedList) => handleSelect(selectedList)}
-                    options={genres}
+                    options={genres.reduce((names, genre) => [...names, genre.name], [])}
                     style={{
                         multiselectContainer: {width: '300px', height: '3rem', marginBottom: '10px'},
                         option: {background: 'rgb(211, 47, 47)'},
