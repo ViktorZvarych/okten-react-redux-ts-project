@@ -4,32 +4,57 @@ import {useSearchParams} from "react-router-dom";
 import {Multiselect} from "multiselect-react-dropdown";
 
 import {IGenre} from "../../../interfaces";
-import {moviesService} from "../../../services";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
+import {genresActions} from "../../../store";
 
 const GenresList = () => {
+    const [selectedValues, setSelectedValues] = useState<IGenre[]>([])
 
     const [, setUrlParams] = useSearchParams();
 
-    const [genres, setGenres] = useState<IGenre[] | null>(null);
+    const {genres, selectedGenres} = useAppSelector(state => state.genres);
 
     useEffect(() => {
-        try {
-            (async (): Promise<void> => {
-                const {data} = await moviesService.getGenres();
-                setGenres(data.genres);
-            })()
-        } catch (e) {
-            console.log(e);
-        }
-    }, [])
+        setSelectedValues(selectedGenres);
+
+        const selectedIds = selectedGenres.map(item => item.id).join(',');
+
+        selectedIds
+            ? setUrlParams(prev => {
+                prev.set('with_genres', selectedIds);
+                return prev;
+            })
+            : setUrlParams(prev => {
+                prev.delete('with_genres');
+                console.log(selectedIds)
+                return prev;
+            })
+
+    }, []);
+    // Don`t(!) update dependencies array to be [selectedGenres, setUrlParams]
+
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(genresActions.getGenres())
+    }, [dispatch]);
 
     const handleSelect = (selectedList: IGenre[]) => {
         const selectedIds = selectedList.map(item => item.id).join(',');
 
-        setUrlParams(prev => {
-            prev.set('with_genres', selectedIds);
-            return prev;
-        })
+        selectedIds
+            ? setUrlParams(prev => {
+                prev.set('with_genres', selectedIds);
+                return prev;
+            })
+            : setUrlParams(prev => {
+                prev.delete('with_genres');
+                console.log(selectedIds)
+                return prev;
+            })
+
+        dispatch(genresActions.setGenresNames([...selectedList]));
     }
 
     return (
@@ -38,6 +63,7 @@ const GenresList = () => {
                 genres
                 &&
                 <Multiselect
+                    selectedValues={selectedValues}
                     displayValue='name'
                     placeholder='Select Genres'
                     onRemove={(selectedList) => handleSelect(selectedList)}

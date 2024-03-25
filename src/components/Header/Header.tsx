@@ -14,7 +14,7 @@ import {SideBar} from "../SideBar";
 import {ThemeToggle} from "../ButtonsContainer";
 import {SearchInput} from "../MovieContainer";
 import {LoginToggle, UserIcon} from "../ButtonsContainer";
-import {useHandleLogInOut} from "../../hooks";
+import {useAppSelector, useHandleLogInOut} from "../../hooks";
 import {Logo} from "./Logo";
 
 const Header = () => {
@@ -23,6 +23,8 @@ const Header = () => {
     useEffect(() => {
         setAuth(!!localToken);
     }, [localToken, setAuth]);
+
+    useAppSelector(state => state)
 
     const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 

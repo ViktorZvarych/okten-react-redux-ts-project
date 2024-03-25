@@ -1,36 +1,34 @@
-import {FC, useEffect, useState} from "react";
+import {FC, useEffect} from "react";
 
 import css from "./Videos.module.css";
-import {IVideosObject} from "../../../interfaces";
-import {moviesService} from "../../../services";
 import {Video} from "./Video.tsx";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
+import {videosActions} from "../../../store";
 
 interface IProps {
     id: number
 }
 
 const Videos: FC<IProps> = ({id}) => {
-    const [videoData, setVideoData] = useState<IVideosObject | null>(null);
+    const {videosObject: videoData} = useAppSelector(state => state.videosObject)
+
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        try {
-            (async (): Promise<void> => {
-                const {data} = await moviesService.getVideos(id);
-                setVideoData(data);
-            })()
-        } catch (e) {
-            console.log(e);
-        }
-    }, [id])
+        id && dispatch(videosActions.getVideos(+id))
+    }, [dispatch, id]);
 
     return (
         <div className={css.videos}>
-            <h3>Trailers</h3>
-            {videoData &&
+
+            {
+                videoData.results
+                &&
                 videoData.results
                     .filter(item => item.type === 'Trailer')
                     .map(item => <Video
-                    key={item.id} video={item}/>)}
+                        key={item.id} video={item}/>)
+            }
         </div>
     );
 };

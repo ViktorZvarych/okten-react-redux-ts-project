@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 
 import css from './MoviesListPage.module.css'
-import {MoviesList, TopBar} from "../../../components";
+import {HeroBanner, MoviesList, TopBar} from "../../../components";
 import {useAppDispatch, useAppSelector, useGetMovieParams} from "../../../hooks";
 import {allMoviesActions} from "../../../store";
 
@@ -22,7 +22,11 @@ const MoviesListPage = () => {
                 <div>
                     <TopBar/>
 
+                    <h2>ALL MOVIES</h2>
+
                     <MoviesList movies={movies}/>
+
+                    <HeroBanner/>
                 </div>
             }
         </div>

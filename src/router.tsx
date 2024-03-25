@@ -7,8 +7,6 @@ import {
     MovieInfoPage,
     MoviesPage,
     MoviesListPage,
-    RegisterPage,
-    SignInPage,
     SearchResultsPage
 } from "./pages";
 import {AuthProvider} from './hocs';
@@ -30,12 +28,6 @@ const router = createBrowserRouter([
                         path: 'login', element: <LoginPage/>, children: [
                             {
                                 index: true, element: <LoginForm/>
-                            },
-                            {
-                                path: 'register', element: <RegisterPage/>
-                            },
-                            {
-                                path: 'signin', element: <SignInPage/>
                             }
                         ]
                     }

@@ -1,10 +1,9 @@
 import {useEffect} from "react";
 
 import css from "../MoviesList/MoviesList.module.css";
-import {IMovie} from "../../../interfaces";
-import {MoviesListCard} from "../MoviesListCard";
 import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {upcomingMoviesActions} from "../../../store";
+import {Slider} from "../../Slider";
 
 const UpcomingList = () => {
     const {upcomingMovies: {results: upcomingMovies}} = useAppSelector(state => state.upcomingMovies);
@@ -16,18 +15,12 @@ const UpcomingList = () => {
 
     return (
         <section className={css.moviesList}>
+            <hr/>
             <h2>Upcoming movies</h2>
             {
                 upcomingMovies
                 &&
-                <div>
-                    <ul className={css.container}>
-                        {upcomingMovies.slice(0,8).map((movie: IMovie) =>
-                            <li key={movie.id}>
-                                <MoviesListCard movie={movie}/>
-                            </li>)}
-                    </ul>
-                </div>
+                <Slider movies={upcomingMovies.slice(0, 12)}/>
             }
             <hr/>
         </section>
