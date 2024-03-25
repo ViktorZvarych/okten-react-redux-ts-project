@@ -23,7 +23,7 @@ const Video: FC<IProps> = ({video}) => {
                         className={css.iframe}
                         src={urls.movies.youtube(key)}
                         title="YouTube video player"
-                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allow="accelerometer; clipboard-write; encrypted-media; web-share"
                         allowFullScreen>
                     </iframe>
                 }

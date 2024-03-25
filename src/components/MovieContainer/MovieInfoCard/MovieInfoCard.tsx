@@ -1,17 +1,26 @@
-import {FC} from "react";
+import {FC, useEffect} from "react";
 
 import css from './MovieInfoCard.module.css'
-import {IMovieDetails} from "../../../interfaces";
 import {PosterPreview} from "../PosterPreview";
 import {StarsRating} from "../StarsRating";
 import {urls} from "../../../constants";
 import {CustomBadge} from "../../CustomBadge";
+import {useAppDispatch, useAppSelector, useScrollToTop} from "../../../hooks";
+import {selectedMovieActions} from "../../../store";
 
 interface IProps {
-    movieDetails: IMovieDetails
+    id: number
 }
 
-const MovieInfoCard: FC<IProps> = ({movieDetails}) => {
+const MovieInfoCard: FC<IProps> = ({id}) => {
+    const {selectedMovie} = useAppSelector(state => state.selectedMovie);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        id && dispatch(selectedMovieActions.getSelectedMovie(+id))
+    }, [dispatch, id]);
+
     const {
         title,
         genres,
@@ -22,35 +31,45 @@ const MovieInfoCard: FC<IProps> = ({movieDetails}) => {
         poster_path,
         budget,
         popularity,
-        backdrop_path
-    } = movieDetails;
+        // backdrop_path
+    } = selectedMovie;
+
+    const {scrollToTopHandler} = useScrollToTop();
+
+    useEffect(() => {
+        scrollToTopHandler()
+    }, [id]);
 
     return (
         <div>
-            <article className={css.article}>
-                <div className={css.card}>
+            {
+                selectedMovie &&
+                <article className={css.article}>
+                    <div className={css.card}>
 
-                    <div className={css.titleContainer}>
-                        <CustomBadge name={genres.map(({name}) => name).join(' ')}/>
+                        <div className={css.titleContainer}>
+                            <CustomBadge name={genres.map(({name}) => name).join(' ')}/>
 
-                        <h2 className={css.cardTitle}>{title}</h2>
+                            <h2 className={css.cardTitle}>{title}</h2>
+                        </div>
+
+                        <img src={urls.movies.poster(poster_path, 300)} alt={title}/>
+
+                        <PosterPreview imgUrl={poster_path}/>
+
+                        <StarsRating stars={vote_average}/>
+
+                        <p>Votes: {vote_count}</p>
+
+                        {release_date && <p>Release date: {release_date.toString()}</p>}
+
+                        <p>Budget: $ {budget}</p>
+                        <p>Popularity: {popularity}</p>
+                        <p>{overview}</p>
                     </div>
+                </article>
+            }
 
-                    <img src={urls.movies.backdrop(backdrop_path, 500)} alt={title}/>
-
-                    <PosterPreview imgUrl={poster_path}/>
-
-                    <StarsRating stars={vote_average}/>
-
-                    <p>Votes: {vote_count}</p>
-
-                    {release_date && <p>Release date: {release_date.toString()}</p>}
-
-                    <p>Budget: $ {budget}</p>
-                    <p>Popularity: {popularity}</p>
-                    <p>{overview}</p>
-                </div>
-            </article>
         </div>
     );
 };

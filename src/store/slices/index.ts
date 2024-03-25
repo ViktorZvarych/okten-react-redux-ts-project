@@ -5,4 +5,6 @@ export * from './popularMoviesSlice.ts';
 export * from './selectedMovieSlice.ts';
 export * from './topRatedMoviesSlice.ts';
 export * from './upcomingMoviesSlice.ts';
+export * from './userInfoSlice.ts';
 export * from './videosSlice.ts';
+export * from './watchMoviesSlice.ts';

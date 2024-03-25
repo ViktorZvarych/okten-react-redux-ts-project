@@ -19,11 +19,17 @@ const GenresList = () => {
 
         const selectedIds = selectedGenres.map(item => item.id).join(',');
 
-        setUrlParams(prev => {
-            prev.set('with_genres', selectedIds);
-            return prev;
-        })
-        
+        selectedIds
+            ? setUrlParams(prev => {
+                prev.set('with_genres', selectedIds);
+                return prev;
+            })
+            : setUrlParams(prev => {
+                prev.delete('with_genres');
+                console.log(selectedIds)
+                return prev;
+            })
+
     }, []);
     // Don`t(!) update dependencies array to be [selectedGenres, setUrlParams]
 
@@ -37,10 +43,16 @@ const GenresList = () => {
     const handleSelect = (selectedList: IGenre[]) => {
         const selectedIds = selectedList.map(item => item.id).join(',');
 
-        setUrlParams(prev => {
-            prev.set('with_genres', selectedIds);
-            return prev;
-        })
+        selectedIds
+            ? setUrlParams(prev => {
+                prev.set('with_genres', selectedIds);
+                return prev;
+            })
+            : setUrlParams(prev => {
+                prev.delete('with_genres');
+                console.log(selectedIds)
+                return prev;
+            })
 
         dispatch(genresActions.setGenresNames([...selectedList]));
     }

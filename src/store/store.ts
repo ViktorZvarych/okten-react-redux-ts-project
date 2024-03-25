@@ -8,19 +8,25 @@ import {
     selectedMovieReducer,
     topRatedMoviesReducer,
     videosReducer,
-    upcomingMoviesReducer
+    upcomingMoviesReducer,
+    userInfoReducer,
+    watchMoviesReducer
 } from "./slices";
 
 const store = configureStore({
     reducer: {
         loadingReducer,
+
         allMovies: allMoviesReducer,
         genres: genresReducer,
         popularMovies: popularMoviesReducer,
         selectedMovie: selectedMovieReducer,
         topRatedMovies: topRatedMoviesReducer,
         upcomingMovies: upcomingMoviesReducer,
-        videosObject: videosReducer
+        videosObject: videosReducer,
+
+        userInfo: userInfoReducer,
+        watchMovies: watchMoviesReducer
     }
 })
 

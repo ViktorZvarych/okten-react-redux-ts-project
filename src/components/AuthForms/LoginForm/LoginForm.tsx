@@ -3,10 +3,12 @@ import {useNavigate} from "react-router-dom";
 import css from './LoginForm.module.css';
 import bgImage from '../../../assets/bg-image.webp';
 import {authService} from "../../../services";
-import {token} from "../../../constants";
+import {useAppSelector} from "../../../hooks";
 
 const LoginForm = () => {
     const navigate = useNavigate();
+
+    const {token} = useAppSelector(state => state.userInfo);
 
     const handleLogin = () => {
         authService.setToken(token);

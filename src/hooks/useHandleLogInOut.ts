@@ -1,9 +1,11 @@
 import {authService} from "../services";
 import {ChangeEvent, useState} from "react";
-import {token} from "../constants";
 import {useNavigate} from "react-router-dom";
+import {useAppSelector} from "./reduxHooks.ts";
 
 const useHandleLogInOut = () => {
+    const {token} = useAppSelector(state => state.userInfo);
+
     const navigate = useNavigate();
 
     const localToken = authService.getToken();
