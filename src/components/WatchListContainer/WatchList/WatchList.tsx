@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from "../../../hooks";
 import {watchMoviesActions} from "../../../store";
 import {moviesService} from "../../../services";
 import {urls} from "../../../constants";
+import {MoviesListCard} from "../../MovieContainer";
 
 const WatchList = () => {
     const {watchMovies} = useAppSelector(state => state.watchMovies);
@@ -19,7 +20,7 @@ const WatchList = () => {
         <ul className={css.WatchList}>
             {watchMovies.map(({id, title, backdrop_path}) =>
                 <li key={id}>
-                    <div>
+                    <div className={css.container}>
                         <img src={urls.movies.backdrop(backdrop_path, 300)} alt={title}/>
                         <h5>{title}</h5>
                     </div>

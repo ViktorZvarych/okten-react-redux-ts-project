@@ -15,7 +15,14 @@
         max-width: 300px;
     }
 
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
     img {
-        max-width: 30%;
+        max-width: 150px;
     }
 }
