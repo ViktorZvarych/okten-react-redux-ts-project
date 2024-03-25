@@ -10,3 +10,4 @@ export * from './SideBar';
 export * from './Slider';
 export * from './TopBar';
 export * from './UserInfo';
+export * from './WatchListContainer';

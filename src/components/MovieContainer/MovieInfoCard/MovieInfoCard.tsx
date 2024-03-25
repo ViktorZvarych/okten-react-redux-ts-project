@@ -7,6 +7,7 @@ import {urls} from "../../../constants";
 import {CustomBadge} from "../../CustomBadge";
 import {useAppDispatch, useAppSelector, useScrollToTop} from "../../../hooks";
 import {selectedMovieActions} from "../../../store";
+import {EditWatchListButton} from "../../WatchListContainer";
 
 interface IProps {
     id: number
@@ -58,6 +59,8 @@ const MovieInfoCard: FC<IProps> = ({id}) => {
                         <PosterPreview imgUrl={poster_path}/>
 
                         <StarsRating stars={vote_average}/>
+
+                        <EditWatchListButton movieId={id}/>
 
                         <p>Votes: {vote_count}</p>
 

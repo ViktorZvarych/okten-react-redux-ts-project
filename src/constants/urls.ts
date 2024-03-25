@@ -23,7 +23,7 @@ const urls = {
     },
     account: {
         userInfo: (accountId: number)=>`${account}/${accountId}`,
-        watchlist: (accountId: number) => `${account}/${accountId}/watchlist/movies`,
+        watchlist: (accountId: number) => `${account}/${accountId}/watchlist`,
     }
 }
 

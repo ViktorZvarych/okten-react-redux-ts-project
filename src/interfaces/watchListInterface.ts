@@ -25,5 +25,5 @@ export interface IWatchMovie {
 export interface ISelectedWatchMovie {
     media_type: 'movie';
     media_id: number;
-    watchlist: boolean;
+    watchlist: true | false | null;
 }

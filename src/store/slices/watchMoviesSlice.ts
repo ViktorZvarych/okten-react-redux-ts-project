@@ -28,6 +28,18 @@ const getWatchMoviesList = createAsyncThunk<IWatchMovie[], void>(
     }
 )
 
+const postWatchMovie = createAsyncThunk<void, ISelectedWatchMovie>(
+    'watchMoviesSlice/postWatchMovie',
+    async (selectedMovie, {rejectWithValue}) => {
+        try {
+            await accountService.postMovieToWatchList(accountId, selectedMovie);
+        } catch (e) {
+            const err = e as AxiosError;
+            return rejectWithValue(err.response?.data);
+        }
+    }
+)
+
 const watchMoviesSlice = createSlice({
     name: 'watchMoviesSlice',
     initialState,
@@ -47,7 +59,8 @@ const {reducer: watchMoviesReducer, actions} = watchMoviesSlice;
 
 const watchMoviesActions = {
     ...actions,
-    getWatchMoviesList
+    getWatchMoviesList,
+    postWatchMovie
 }
 
 export {
