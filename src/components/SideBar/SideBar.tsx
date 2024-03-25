@@ -1,13 +1,12 @@
-import {FC, useEffect} from "react";
-import {NavLink} from "react-router-dom";
+import {FC} from "react";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Drawer from "@mui/material/Drawer";
 
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {watchMoviesActions} from "../../store";
+import css from './SideBar.module.css';
+import {WatchList} from "../WatchListContainer";
 
 interface IProps {
     mobileOpen: boolean,
@@ -15,21 +14,9 @@ interface IProps {
 }
 
 const SideBar: FC<IProps> = ({mobileOpen, handleDrawerToggle}) => {
-    const {watchMovies} = useAppSelector(state => state.watchMovies);
-    const dispatch = useAppDispatch();
-    
-    useEffect(() => {
-        dispatch(watchMoviesActions.getWatchMoviesList())
-    }, [dispatch]);
-
-    useEffect(() => {
-        console.log(watchMovies)
-    }, [watchMovies]);
-
-    
     return (
         <Drawer
-            anchor="left"
+            anchor="right"
             variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}
@@ -37,25 +24,24 @@ const SideBar: FC<IProps> = ({mobileOpen, handleDrawerToggle}) => {
             sx={{
                 '& .MuiDrawer-paper': {
                     boxSizing: 'border-box',
-                    width: 240,
-                    background: 'darkslategray'
+                    width: '50vw',
+                    maxWidth: 400,
+                    background: 'darkslategray',
+                    color: 'snow'
                 },
             }}
         >
             <Box sx={{textAlign: 'center'}}>
                 <Typography variant="h6" sx={{my: 2}}>
-                    <NavLink to={'/movies'}>
-                        <div style={{backgroundColor: '#d32f2f'}}>
+                    <div className={css.SideBarHeader}>
                             <Button onClick={handleDrawerToggle} sx={{color: 'snow'}}>
-                                <p>Watch List</p>
+                                <p>X</p>
                             </Button>
+                            <h3>Watch List</h3>
                         </div>
-                    </NavLink>
                 </Typography>
             </Box>
-            <ul>
-                {watchMovies.map(({id, title}) => <li key={id}>{title}</li>)}
-            </ul>
+            <WatchList/>
         </Drawer>
     );
 };

@@ -1,1 +1,2 @@
-export * from './EditWatchListButton'
+export * from './EditWatchListButton';
+export * from './WatchList';
