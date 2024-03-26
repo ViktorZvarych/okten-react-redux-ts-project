@@ -1,18 +1,14 @@
 import {NavLink} from "react-router-dom";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 
 const Logo = () => {
 
     return (
-        <Typography variant="h6" component="div" sx={{flexGrow: 1}}
-        >
-            <NavLink to={`/`}>
+            <NavLink to={`/movies/hero`}>
                 <Button sx={{color: 'snow'}}>
-                    <h1 className='logo'>Movies</h1>
+                    <h1 className='logo'>App</h1>
                 </Button>
             </NavLink>
-        </Typography>
     );
 };
 

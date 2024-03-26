@@ -1,7 +1,14 @@
 .EditWatchListButton {
+    :hover {
+        cursor: pointer;
+    }
+
+    :active {
+        scale: 90%;
+    }
 
     svg {
-        height: 50px;
+        height: 100%;
         fill:transparent;
         stroke:black;
         stroke-width:20;
@@ -9,14 +16,8 @@
     }
 
     .active{
-        animation:like 0.5s 1;
         fill:red;
         stroke:none;
     }
 
-    @-webkit-keyframes like {
-        0%   { transform: scale(1); }
-        90%   { transform: scale(1.2); }
-        100% { transform: scale(1.1); }
-    }
 }

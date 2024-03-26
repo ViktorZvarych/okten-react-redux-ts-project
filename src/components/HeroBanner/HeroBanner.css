@@ -1,4 +1,5 @@
 .HeroBanner {
+
     .swiper {
         width: 100%;
         height: 100%;
@@ -36,11 +37,8 @@
 
     .mySwiper2 {
         height: 80vh;
+        max-height: 420px;
         max-width: 90vw;
-    }
-
-    .mySwiper2 img {
-        height: 70vh;
     }
 
     .myHeroSwiper {
@@ -67,7 +65,7 @@
     }
 
     .mySwiper2 img {
-        max-height: 60vh;
+        max-height: 250px;
         height: 60vh;
 
         &:hover {

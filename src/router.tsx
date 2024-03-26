@@ -11,7 +11,7 @@ import {
 } from "./pages";
 import {AuthProvider} from './hocs';
 import {ThemeContextProvider} from "./hocs";
-import {LoginForm} from "./components";
+import {HeroBanner, LoginForm} from "./components";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +42,10 @@ const router = createBrowserRouter([
                     {
                         path: 'movies', element: <MoviesPage/>, children: [
                             {
-                                index: true, element: <Navigate to={'list'}/>
+                                index: true, element: <Navigate to={'hero'}/>
+                            },
+                            {
+                                path: 'hero', element: <HeroBanner/>
                             },
                             {
                                 path: 'list', element: <MoviesListPage/>

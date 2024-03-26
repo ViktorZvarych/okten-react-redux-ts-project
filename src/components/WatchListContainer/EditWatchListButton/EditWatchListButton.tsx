@@ -1,10 +1,9 @@
-import {FC, useEffect, useState} from "react";
-
-import {useAppDispatch, useAppSelector} from "../../../hooks";
-import {watchMoviesActions} from "../../../store";
+import React, {FC, useEffect, useState} from "react";
+import {Tooltip} from "@mui/material";
 
 import css from './EditWatchListButton.module.css';
-import {Tooltip} from "@mui/material";
+import {useAppDispatch, useAppSelector} from "../../../hooks";
+import {watchMoviesActions} from "../../../store";
 
 interface IProps {
     movieId: number;
@@ -21,7 +20,8 @@ const EditWatchListButton: FC<IProps> = ({movieId}) => {
         setMovieIsInWatchList(isInWatchList);
     }, [movieId, watchMovies]);
 
-    const editWatchListHandler = async () => {
+    const editWatchListHandler: React.MouseEventHandler<SVGSVGElement> = async (e) => {
+        e.stopPropagation();
         await dispatch(watchMoviesActions.postWatchMovie({
             media_id: movieId,
             media_type: 'movie',
@@ -29,10 +29,6 @@ const EditWatchListButton: FC<IProps> = ({movieId}) => {
         }));
         await dispatch(watchMoviesActions.getWatchMoviesList());
     }
-
-    useEffect(() => {
-        console.log(watchMovies, movieIsInWatchList)
-    }, [watchMovies, movieIsInWatchList]);
 
     return (
         <span className={css.EditWatchListButton} >

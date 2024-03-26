@@ -1,6 +1,7 @@
 .header {
     .flex {
         width: 100vw;
+        height: 60px;
         position: relative;
         display: flex;
         justify-content: space-around;
@@ -40,6 +41,23 @@
     li {
         color: snow;
         text-decoration: none;
+    }
+
+    .heartIcon {
+        height: 24px;
+        fill: transparent;
+        stroke: white;
+        stroke-width: 60;
+        transition: all 0.2s;
+
+        :hover {
+            cursor: pointer;
+            scale: 105%;
+        }
+
+        :active {
+            scale: 95%;
+        }
     }
 
 }

@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-import './styles.css';
+import './Slider.css';
 import {IMovie} from "../../interfaces";
 import {useHandleNavigateToMovie, useScrollToTop} from "../../hooks";
 import {MoviesListCard} from "../MovieContainer";

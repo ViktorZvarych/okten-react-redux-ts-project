@@ -6,13 +6,11 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-// import css from './HeroBanner.module.css';
-import './styles.css';
+import './HeroBanner.css';
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {topRatedMoviesActions} from "../../store";
 import {urls} from "../../constants";
 import {MoviesListCard, PopularList, UpcomingList} from "../MovieContainer";
-
 
 const HeroBanner = () => {
     const {topRatedMovies: {results: topRatedMovies}} = useAppSelector(state => state.topRatedMovies);
@@ -48,7 +46,7 @@ const HeroBanner = () => {
                 {
                     topRatedMovies.slice(0, 8).map((movie) => (
                         <SwiperSlide key={movie.id}>
-                            <div>
+                            <div className='main-swiper-container'>
                                 <MoviesListCard movie={movie} width={500}/>
                             </div>
                         </SwiperSlide>

@@ -52,11 +52,15 @@ const MovieInfoCard: FC<IProps> = ({id}) => {
                             <CustomBadge name={genres.map(({name}) => name).join(' ')}/>
 
                             <h2 className={css.cardTitle}>{title}</h2>
-
-                            <EditWatchListButton movieId={id}/>
                         </div>
 
-                        <img src={urls.movies.poster(poster_path, 300)} alt={title}/>
+                        <div className={css.imgContainer}>
+                            <img src={urls.movies.poster(poster_path, 300)} alt={title}/>
+                            <span className={css.heartContainer}>
+                                <EditWatchListButton movieId={id}/>
+                            </span>
+                        </div>
+
 
                         <PosterPreview imgUrl={poster_path}/>
 

@@ -7,8 +7,6 @@ interface IProps {
 }
 
 const CustomBadge: FC<IProps> = ({name}) => {
-    console.log('render CustomBadge');
-
     return (
 
         <div className={css.container}>

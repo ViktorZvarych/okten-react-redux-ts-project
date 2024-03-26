@@ -1,5 +1,6 @@
 .WatchList {
     margin: 0 auto;
+    padding: 5px;
     width: 100%;
     display: flex;
     flex-direction: column-reverse;
@@ -9,10 +10,17 @@
 
     li {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        width: 80%;
-        max-width: 300px;
+        width: 90%;
+        max-width: 250px;
+        border-bottom: 1px solid snow;
+        font-size: 1rem;
+        &:hover {
+            cursor: pointer;
+            /*scale: 105%;*/
+            box-shadow: 0 0 20px 0 rgb(211, 47, 47);
+        }
     }
 
     .container {
@@ -20,9 +28,19 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        img {
+            max-width: 150px;
+        }
     }
 
-    img {
-        max-width: 150px;
+    .heartContainer {
+        height: 40px;
+        position: relative;
+        .closeIcon {
+            position: absolute;
+            top: 14%;
+            left: 20%;
+        }
     }
 }

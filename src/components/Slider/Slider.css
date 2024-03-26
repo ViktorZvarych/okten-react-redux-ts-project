@@ -1,11 +1,12 @@
 .Slider {
     .mySliper {
-        min-height: 350px;
+        min-height: 300px;
     }
     .swiper {
         width: 100%;
-        padding-top: 50px;
         padding-bottom: 50px;
+        margin-top: 20px;
+        margin-bottom: 30px;
     }
 
     .swiper-slide {

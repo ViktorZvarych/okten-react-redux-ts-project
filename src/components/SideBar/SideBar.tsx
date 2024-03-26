@@ -25,7 +25,7 @@ const SideBar: FC<IProps> = ({mobileOpen, handleDrawerToggle}) => {
                 '& .MuiDrawer-paper': {
                     boxSizing: 'border-box',
                     width: '50vw',
-                    maxWidth: 400,
+                    maxWidth: 350,
                     background: 'darkslategray',
                     color: 'snow'
                 },
@@ -34,11 +34,12 @@ const SideBar: FC<IProps> = ({mobileOpen, handleDrawerToggle}) => {
             <Box sx={{textAlign: 'center'}}>
                 <Typography variant="h6" sx={{my: 2}}>
                     <div className={css.SideBarHeader}>
-                            <Button onClick={handleDrawerToggle} sx={{color: 'snow'}}>
-                                <p>X</p>
-                            </Button>
-                            <h3>Watch List</h3>
-                        </div>
+                        <h3>Watch List</h3>
+
+                        <Button onClick={handleDrawerToggle} sx={{color: 'snow'}}>
+                            <p>X</p>
+                        </Button>
+                    </div>
                 </Typography>
             </Box>
             <WatchList/>

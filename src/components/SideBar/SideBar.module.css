@@ -1,3 +1,5 @@
 .SideBarHeader {
     background: #d32f2f;
+    display: flex;
+    justify-content: space-around;
 }

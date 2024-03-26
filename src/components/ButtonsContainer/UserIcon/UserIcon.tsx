@@ -1,17 +1,25 @@
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
-import {MouseEvent, useState} from "react";
+import {MouseEvent, useEffect, useState} from "react";
 import IconButton from "@mui/material/IconButton";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import {useHandleLogInOut} from "../../../hooks";
+import {useAppDispatch, useAppSelector, useHandleLogInOut} from "../../../hooks";
+import {userInfoActions} from "../../../store";
 
 const UserIcon = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
     const {auth, handleChangeLogin} = useHandleLogInOut();
+
+    const {userInfo} = useAppSelector(state => state.userInfo);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(userInfoActions.getUserInfo())
+    }, [dispatch]);    
 
     const handleMenu = (event: MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -49,7 +57,11 @@ const UserIcon = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                {
+                    userInfo &&
+                    <MenuItem onClick={handleClose}>{userInfo.username}</MenuItem>
+                }
+
 
                 <FormGroup onClick={handleClose}>
                     <FormControlLabel

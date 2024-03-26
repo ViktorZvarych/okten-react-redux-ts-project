@@ -1,10 +1,11 @@
 import {useEffect, useState} from "react";
+import {NavLink} from "react-router-dom";
 
+import Button from "@mui/material/Button";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Slide from '@mui/material/Slide';
 import {useScrollTrigger} from "@mui/material";
@@ -48,6 +49,12 @@ const Header = () => {
                             <div className={css.flex}>
                                 <Logo/>
 
+                                <NavLink to={`/movies/list`}>
+                                    <Button sx={{color: 'snow'}}>
+                                        <h2>Movies</h2>
+                                    </Button>
+                                </NavLink>
+
                                 {auth && <SearchInput/>}
                             </div>
 
@@ -66,7 +73,12 @@ const Header = () => {
                                             sx={{marginLeft: 2}}
                                             onClick={handleDrawerToggle}
                                         >
-                                            <MenuIcon/>
+                                            <svg
+                                                 className={css.heartIcon}
+                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                <path
+                                                    d="M256 448l-30.164-27.211C118.718 322.442 48 258.61 48 179.095 48 114.221 97.918 64 162.4 64c36.399 0 70.717 16.742 93.6 43.947C278.882 80.742 313.199 64 349.6 64 414.082 64 464 114.221 464 179.095c0 79.516-70.719 143.348-177.836 241.694L256 448z"></path>
+                                            </svg>
                                         </IconButton>
                                     </div>
                                 }

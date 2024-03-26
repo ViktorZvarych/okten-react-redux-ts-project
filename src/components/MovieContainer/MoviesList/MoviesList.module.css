@@ -1,4 +1,8 @@
 .moviesList {
+
+    h2 {
+        padding: 1rem;
+    }
     width: fit-content;
     margin: 0 auto;
 
