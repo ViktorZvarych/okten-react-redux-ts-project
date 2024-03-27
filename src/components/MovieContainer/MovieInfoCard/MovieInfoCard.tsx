@@ -31,8 +31,7 @@ const MovieInfoCard: FC<IProps> = ({id}) => {
         vote_average,
         poster_path,
         budget,
-        popularity,
-        // backdrop_path
+        backdrop_path
     } = selectedMovie;
 
     const {scrollToTopHandler} = useScrollToTop();
@@ -45,36 +44,46 @@ const MovieInfoCard: FC<IProps> = ({id}) => {
         <div>
             {
                 selectedMovie &&
-                <article className={css.article}>
-                    <div className={css.card}>
+                <div className={css.cardContainer}>
 
-                        <div className={css.titleContainer}>
-                            <CustomBadge name={genres.map(({name}) => name).join(' ')}/>
-
-                            <h2 className={css.cardTitle}>{title}</h2>
+                    <div className={css.movieCard}>
+                        <div className={css.heartContainer}>
+                            <EditWatchListButton movieId={id}/>
                         </div>
+                        <div className={css.infoSection}>
+                            <div className={css.movieHeader}>
+                                <img
+                                    className={css.image}
+                                    src={urls.movies.poster(poster_path, 300)}
+                                    alt={title}
+                                />
+                                <div className={css.titleContainer}>
+                                    <CustomBadge name={genres.map(({name}) => name).join(' ')}/>
 
-                        <div className={css.imgContainer}>
-                            <img src={urls.movies.poster(poster_path, 300)} alt={title}/>
-                            <span className={css.heartContainer}>
-                                <EditWatchListButton movieId={id}/>
-                            </span>
+                                    <h2 className={css.cardTitle}>{title}</h2>
+                                </div>
+                                {release_date && <h4>Release date: {release_date.toString()}</h4>}
+                                <span className={css.votes}>Votes: {vote_count}</span>
+                                <p className={css.budget}>Budget: ${budget}</p>
+                            </div>
+                            <div className={css.movieDesc}>
+                                <p className={css.text}>
+                                    {overview}
+                                </p>
+                            </div>
+
+                            <div className={css.movieSocial}>
+                                <StarsRating stars={vote_average}/>
+                            </div>
+
+                            <PosterPreview imgUrl={poster_path}/>
                         </div>
-
-
-                        <PosterPreview imgUrl={poster_path}/>
-
-                        <StarsRating stars={vote_average}/>
-
-                        <p>Votes: {vote_count}</p>
-
-                        {release_date && <p>Release date: {release_date.toString()}</p>}
-
-                        <p>Budget: $ {budget}</p>
-                        <p>Popularity: {popularity}</p>
-                        <p>{overview}</p>
+                        <div className={css.blurBack}
+                             style={{background: `url(${urls.movies.backdrop(backdrop_path, 1280)}`}}></div>
                     </div>
-                </article>
+
+                </div>
+
             }
 
         </div>

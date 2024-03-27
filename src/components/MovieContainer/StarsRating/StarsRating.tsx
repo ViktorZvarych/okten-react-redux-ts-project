@@ -18,8 +18,8 @@ const StarsRating: FC<IProps> = ({stars}) => {
     return (
         <div className={css.starsRating}>
             {rating && (
-                <div>
-                    <Rating readOnly style={{maxWidth: 250}} items={10} value={rating}/>
+                <div className={css.container}>
+                    <Rating readOnly style={{maxWidth: 220}} items={10} value={rating}/>
 
                     <p>{rating.toFixed(2)} of 10</p>
                 </div>

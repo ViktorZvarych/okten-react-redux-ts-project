@@ -1,7 +1,16 @@
 .starsRating {
     align-self: center;
+    max-width: 280px;
+    padding-bottom: 10px;
 
     p {
         text-align: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

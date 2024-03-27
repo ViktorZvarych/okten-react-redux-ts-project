@@ -10,9 +10,10 @@
 
     li {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
-        width: 90%;
+        width: 70%;
+        height: 150px;
         max-width: 250px;
         border-bottom: 1px solid snow;
         font-size: 1rem;
@@ -24,6 +25,7 @@
     }
 
     .container {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -36,11 +38,8 @@
 
     .heartContainer {
         height: 40px;
-        position: relative;
-        .closeIcon {
-            position: absolute;
-            top: 14%;
-            left: 20%;
-        }
+        position: absolute;
+        top: -25px;
+        left: 50%;
     }
 }

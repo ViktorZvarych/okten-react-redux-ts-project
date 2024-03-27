@@ -32,11 +32,12 @@ const WatchList = () => {
                     <div className={css.container}>
                         <img src={urls.movies.backdrop(backdrop_path, 300)} alt={title}/>
                         <h3>{title}</h3>
+                        <div className={css.heartContainer}>
+                            <EditWatchListButton movieId={id}/>
+                        </div>
                     </div>
 
-                    <div className={css.heartContainer}>
-                        <EditWatchListButton movieId={id}/>
-                    </div>
+
                 </li>
             )}
         </ul>
