@@ -39,6 +39,7 @@ const MovieInfoCard: FC<IProps> = ({id}) => {
     useEffect(() => {
         scrollToTopHandler()
     }, [id]);
+    // Do not modify this useeffect dependency array
 
     return (
         <div>

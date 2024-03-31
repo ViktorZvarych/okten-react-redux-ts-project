@@ -1,6 +1,7 @@
 .EditWatchListButton {
     :hover {
         cursor: pointer;
+        scale: 110%;
     }
 
     :active {
@@ -13,6 +14,7 @@
         stroke:black;
         stroke-width:20;
         transition:all 0.5s;
+
     }
 
     .active{
